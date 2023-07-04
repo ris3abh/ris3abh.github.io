@@ -115,7 +115,7 @@ const skills = [{
 ];
 
 const dataportfolio = [{
-        img: "https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pone.0187336/1/pone.0187336.g001.PNG_L?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20230401%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20230401T221540Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=671582602955a40ac3750f53c3a53581713883e3485ac8962cb7b7ff60164357445e8da737eb8f0bcd5166d349f5c8a1ba050939874b3d633cd1cf17cf6f4cefd62cdbd7d034cd096835c1555bf45a5b3ee16b22396d8a2799623bdd5d65124b168f237dbeb0bc08e9741aabcbc34968ca4817625bdc535ad3260c3da92bbbe33aa5d48b9a20ac66b6c0d81291f686bf50d9401faba36201cf879e99ef2c476c0fd18e859f1e6e0851d373ce6b70f155eed885c36cf5a6708808e272538d9636dd5bbae15a0db508bd356dea7971b977223f47a3484811887c62cbb06695ddf54679780cb74653e25608f09512b2e65275cfdcbcfcf005be51b50de8928f4a07",
+        img: "https://saratoga-ophthalmology.com/wp-content/uploads/2017/12/Retina-Fundus.jpg",
         description: "Deep Learning Model for Multi-labeled classification of Diseases in Fundus Images.",
         link: "https://github.com/ris3abh/rfmd",
     },
@@ -125,7 +125,7 @@ const dataportfolio = [{
         link: "https://github.com/ris3abh/Sentencing-prediction-on-docket-data",
     },
     {
-        img: "https://www.calacademy.org/sites/default/files/styles/manual_crop_standard_960x540/public/uploads/images/life-poster-2.jpg?itok=j4JGdHq0&c=e20fdff20cc5e1bb75d349713378a2e6",
+        img: "https://airows.com/.image/t_share/MTI5MDAxNzk4MTE0NTc5NzMw/close-encounters-of-the-third-kind-1977-005-poster-00n-1id.jpg",
         description: "Impact and Sentiment analysis of Scientific Films",
         link: "https://github.com/ris3abh/impact-sentiment-Analysis-Of-Scientific-Films",
     },
