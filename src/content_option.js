@@ -23,6 +23,14 @@ const dataabout = {
     aboutme3: "So if you’re looking for someone who’s equal parts nerdy and fun, then look no further than Rishabh, your friendly neighborhood data scientist!! I’m currently looking for a full-time position as a data scientist.",
 };
 const worktimeline = [{
+    jobtitle: "Data Science Intern",
+    where: "Black Knight Financial Services",
+    date: "July - 2023 to Present",
+    description1: "● Designed data pipelines and engineering infrastructure in support of enterprise machine learning and AI systems and models at scale",
+    description2: "●Transformed experimental/developmental models built by data scientists into productized AI/ML solutions",
+    description3: "●Developed and deploy scalable tools and services for Data Science as a Service machine learning training and inference pipelines(CI/CD)",
+},
+    {
         jobtitle: "Data Science Intern",
         where: "Digital Pass",
         date: "Feb - 2021 to Oct - 2021",
