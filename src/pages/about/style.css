@@ -105,7 +105,7 @@
     background: var(--secondary-color);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    color: rgb(93, 74, 114);
+    color: rgb(225, 225, 225);
     padding: 30px;
     transition: all 0.3s ease-in-out;
 }

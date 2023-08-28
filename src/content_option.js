@@ -15,13 +15,16 @@ const introdata = {
     your_img_url: "https://animesher.com/orig/1/194/1943/19438/animesher.com_anime-aesthetic-cyberpunk-aesthetic-1943837.gif",
 };
 
+
+
 const dataabout = {
     title: "about my self",
     aboutme: "Wassup!!",
-    aboutme1: " Hi there! My name is Rishabh, and I’m a data scientist with a passion for deep learning and big data.",
-    aboutme2: " I have experience using tools like TensorFlow, PyTorch, and Apache Spark to build models that can tackle complex problems. When I’m not tinkering with algorithms or poring over datasets, you can find me playing video games, binge watching animes, or trying out the latest tech gadgets. I’m always on the hunt for new ways to stay ahead of the curve, whether that means experimenting with new machine-learning models or trying out the latest programming language or something else entirely. Recently, I’ve been exploring the potential of deep learning to improve natural language processing and computer vision applications. I’ve also been experimenting with different approaches to handling big data, including distributed computing and cloud-based solutions.",
-    aboutme3: "So if you’re looking for someone who’s equal parts nerdy and fun, then look no further than Rishabh, your friendly neighborhood data scientist!! I’m currently looking for a full-time position as a data scientist.",
+    aboutme1: "● Proficient in TensorFlow, PyTorch, and Apache Spark for complex problem-solving.",
+    aboutme2: "● Enjoys gaming, anime, and exploring tech gadgets.",
+    aboutme3: "● Friendly and nerdy data scientist seeking full-time position.",
 };
+
 const worktimeline = [{
     jobtitle: "Data Science Intern",
     where: "Black Knight Financial Services",
