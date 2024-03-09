@@ -20,49 +20,56 @@ const introdata = {
 const dataabout = {
     title: "about my self",
     aboutme: "Wassup!!",
-    aboutme1: "● Proficient in TensorFlow, PyTorch, and Apache Spark for complex problem-solving.",
-    aboutme2: "● Enjoys gaming, anime, and exploring tech gadgets.",
-    aboutme3: "● Friendly and nerdy data scientist seeking full-time position.",
+    aboutme1: "I'm a passionate Data Scientist with a deep expertise in leveraging cutting-edge technologies like TensorFlow, PyTorch, and Apache Spark to tackle complex data challenges and drive insights. My enthusiasm for technology extends beyond the professional realm—I'm an avid gamer, anime aficionado, and tech gadget enthusiast, always on the lookout for the next intriguing discovery.",
+    aboutme2: "With a blend of analytical prowess and a keen interest in the latest technological advancements, I bring a unique combination of technical skills and creativity to the table. I'm eager to join a dynamic team where I can contribute to meaningful projects and continue my journey of learning and innovation.",
+    aboutme3: "Looking forward to making data-driven decisions together!",
 };
 
 const worktimeline = [{
     jobtitle: "Data Science Intern",
     where: "Black Knight Financial Services",
     date: "July - 2023 to Present",
-    description1: "● Designed data pipelines and engineering infrastructure in support of enterprise machine learning and AI systems and models at scale",
-    description2: "●Transformed experimental/developmental models built by data scientists into productized AI/ML solutions",
-    description3: "●Developed and deploy scalable tools and services for Data Science as a Service machine learning training and inference pipelines(CI/CD)",
+    description1: "●Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
+    description2: "● Deployed machine learning models via AWS SageMaker to mimic cognitive thinking, improving data analysis and productivity by 17%.",
+    description3: "● Implemented containerization with Docker and leveraged MPP frameworks for scalable AI/ML model deployment, ensuring robust performance and efficiency across financial services.",
+    description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency."
 },
     {
         jobtitle: "Data Science Intern",
         where: "Digital Pass",
         date: "Feb - 2021 to Oct - 2021",
-        description1: "●Implemented unsupervised machine learning algorithms and conducted sentiment analysis of 5TB of unstructured text data collected from Twitter and feedback handles of the company utilizing Python programming language.",
-        description2:"●Worked on annotating a massive corpus of texts by utilizing Pysparks and various ML services with cloud computing resources from Google Cloud and AWS.",
-        description3: "●Constructed recommendation systems and chatbots for numerous companies while optimizing data pipelines for large-scale nearest-neighbor search algorithms",
+        description1: "● Implemented Python-based sentiment analysis on a 50TB dataset from a NoSQL database (MongoDB) containing application data, achieving a 13% improvement in customer sentiment accuracy and insights.",
+        description2: "● Played a key role in the design and implementation of Azure-based data warehousing solutions,improving data analysis efficiency by 30%. Streamlined and maintained ETL processes using Python and Talend, facilitating efficient data transformation and loading.",
+        description3: "● Mapped user interactions and enhancing content dissemination by leveraging graph theory to refine social media marketing approaches which led to marked improvements in audience engagement and campaign performance metrics by 18%.",
+        description4: "● Developed ETL processes utilizing Azure Data Factory and Python, improving data transformation and loading efficiency. Worked extensively with Azure SQL Database for data warehousing, contributing to a 30% improvement in data analysis efficiency."
     },
     {
         jobtitle: "Data Science Intern",
         where: "SK Enterprises",
         date: "Nov - 2020 to Jan - 2021",
-        description1: "●Formulated statistical models to enhance fare products and overall customer experience by gaining insights into customers",
-        description2: "●Developed a predictive system to monitor machine performance and downtime with a 94% accuracy rate, leading to a 14% increase in overall equipment effectiveness(OEE)",
+        description1: "● Enhanced product demand forecasting accuracy by applying predictive modeling and machine learning solutions to inform data-driven strategies and enhance operational efficiencies to inform data-driven strategies and enhance operational efficiencies by 7%.",
+        description2: "● Developed a predictive system to monitor machine performance and downtime with a 94% accuracy rate, leading to a 14% increase in overall equipment effectiveness(OEE)",
+        description3: "● Utilized statistical forecasting with LSTM to boost the accuracy of demand predictions for 36 products by 40%, directly contributing to more effective inventory management and customer satisfaction.", 
+        description4: "● Engineered and validated advanced quantitative models to optimize inventory management, significantly reducing overstock scenarios."
     },
     {
         jobtitle: "SDE Intern",
         where: "Oyelazy",
         date: "Aug - 2020 to Oct - 2020",
-        description1: "●Developed a web application for a startup using React JS and Node JS",
-        description2: "● Developed a backend API for the web application using Node JS and MongoDB",
-        description3: "●Improved the performance of the web application by 20% by optimizing the code and using caching techniques",
+        description1: "● Spearheaded the development of a React JS and Node JS-based web application, emulating the functionalities of UrbanClap, to connect service providers with consumers in real-time.", 
+        description2: "● Engineered a robust backend API leveraging Node JS and MongoDB, ensuring seamless data exchange and operational integrity for user transactions and service bookings.",
+        description3: "● Enhanced web application performance by 20% through strategic code optimization and the implementation of advanced caching techniques, leading to improved user experience and faster load times.",
+        description4: "● Contributed to the creation of a user-friendly interface, incorporating dynamic search functionalities and real-time service status updates to facilitate easier navigation and engagement for users.",
+        
     },
     {
         jobtitle: "SDE Intern",
         where: "Resillience",
         date: "Jan - 2020 to Jul - 2020",
-        description1: "●Developed a web application for an educational firm using React JS and Node JS",
-        description2: "●Developed an interface for live video streaming using WebRTC and a live one-to-one video feature for doubt clearing sessions",
-        description3: "●Developed a backend API for the web application using Node JS and MongoDB",
+        description1: "● Developed a comprehensive React JS and Node JS web application for online tuition classes targeting IIT aspirants, featuring an intuitive user interface and seamless course navigation.",
+        description2: "● Implemented a cutting-edge live video streaming interface utilizing WebRTC, supporting both one-to-one and one-to-many conferencing options for interactive doubt clearing sessions.",
+        description3: "● Architected a scalable backend API using Node JS and MongoDB, catering to the educational platform's requirements for content delivery, user management, and live session scheduling.",
+        description4: "● Pioneered the integration of interactive whiteboard functionality within live video sessions, enabling real-time collaboration and problem-solving between instructors and students.",
     },
 ];
 

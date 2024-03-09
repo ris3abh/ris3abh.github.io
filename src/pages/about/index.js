@@ -56,6 +56,7 @@ export const About = () => {
                     <p className="card-text">{data.description1}</p>
                     <p className="card-text">{data.description2}</p>
                     <p className="card-text">{data.description3}</p>
+                    <p className="card-text">{data.description4}</p>
                   </div>
                 </div>
               );

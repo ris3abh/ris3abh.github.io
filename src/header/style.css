@@ -5,20 +5,20 @@
 }
 
 .menu__button {
-    color: var(--text-color-2);
+    color: var(--text-color-1);
 }
 
 .menu__button:focus,
 .menu__button:hover {
-    color: var(--text-color-2);
+    color: var(--text-color-1);
     box-shadow: unset;
 }
 
 .menu__button svg {
     width: 2em;
     height: 2em;
-    fill: var(--text-color-2);
-    color: var(--text-color-2);
+    fill: var(--primary-color2);
+    color: var(--primary-color2);
 }
 
 .nav_ac {
@@ -36,7 +36,7 @@
 }
 
 .nav_ac:hover {
-    color: var(--text-color-3);
+    color: var(--text-color-2);
 }
 
 .br-top,
