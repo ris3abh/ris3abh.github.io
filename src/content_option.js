@@ -26,16 +26,16 @@ const dataabout = {
 };
 
 const worktimeline = [{
-    jobtitle: "Data Science Intern",
-    where: "Black Knight Financial Services",
-    date: "July - 2023 to December 2023",
+    jobtitle: "Data Science Co-op",
+    where: "Dark Matter Technologies",
+    date: "July - 2023 to December - 2023",
     description1: "●Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
     description2: "● Deployed machine learning models via AWS SageMaker to mimic cognitive thinking, improving data analysis and productivity by 17%.",
     description3: "● Implemented containerization with Docker and leveraged MPP frameworks for scalable AI/ML model deployment, ensuring robust performance and efficiency across financial services.",
     description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency."
 },
     {
-        jobtitle: "Data Science Intern",
+        jobtitle: "Data Scientist",
         where: "Digital Pass",
         date: "June - 2021 to June - 2022",
         description1: "● Implemented Python-based sentiment analysis on a 50TB dataset from a NoSQL database (MongoDB) containing application data, achieving a 13% improvement in customer sentiment accuracy and insights.",
@@ -172,7 +172,7 @@ const dataportfolio = [{
 
 const contactConfig = {
     YOUR_EMAIL: "rishabh.sharma1103@gmail.com",
-    YOUR_FONE: "+1-(215)-966-7407",
+    YOUR_FONE: "+1-(445)-260-7077",
     description: "I’m currently looking for a full-time position as a data scientist. If you’re interested in working with me, then please feel free to reach out",
     YOUR_SERVICE_ID: "service_70d0zad",
     YOUR_TEMPLATE_ID: "template_tu0xodc",
