@@ -132,10 +132,21 @@ const skills = [{
 
 ];
 
-const dataportfolio = [{
+const dataportfolio = [
+    {
+        img: "https://imgs.search.brave.com/mp2xdVuOGfbFPTUzDfLUVVZKpyRSb3b_1Yz_cHE8VXM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzA1L0J1cm5vdXRf/b3BzX29uX01hbmd1/bV9GaXJlX01jQ2Fs/bF9TbW9rZWp1bXBl/cnMuanBn",
+        description: "Enhanced wildfire dataset quality and detection precision using advanced preprocessing and AI models, culminating in high-accuracy wildfire tracing and hazard monitoring.",
+        link: "https://github.com/ris3abh/DL-firefighters",
+    },
+    {
         img: "https://saratoga-ophthalmology.com/wp-content/uploads/2017/12/Retina-Fundus.jpg",
         description: "Deep Learning Model for Multi-labeled classification of Diseases in Fundus Images.",
         link: "https://github.com/ris3abh/rfmd",
+    },
+    {
+        img: "https://imgs.search.brave.com/DkQiaAwfRGrdzhJwFDb3HeUv3BATEaEb2ZyfCxpK7qU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/c3BvcnRzYm9va3Jl/dmlldy5jb20vdXBs/b2Fkcy8zZmJiMTQ2/ZC03YmYyLTQwOWIt/OWY2ZC1kNGEzM2Nk/ZmQzYjguanBn",
+        description: "This project focuses on predicting the Over/Under outcome of NBA games based on the historical performance of the teams involved. It's important to note that the objective is not to surpass the accuracy of the predictions made by betting websites.",
+        link: "https://github.com/ris3abh/NBA_Betting",
     },
     {
         img: "https://www.centercityphila.org/uploads/attachments/cleis8iq20uwisaqdfj9dhnrg-point-breeze-aerial-photography-wefilmphilly-1-1.635.821.4168.2605.full.jpg",
