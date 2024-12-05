@@ -25,15 +25,17 @@ const dataabout = {
     aboutme3: "Looking forward to making data-driven decisions together!",
 };
 
-const worktimeline = [{
-    jobtitle: "Data Science Co-op",
-    where: "Dark Matter Technologies",
-    date: "July - 2023 to December - 2023",
-    description1: "●Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
-    description2: "● Deployed machine learning models via AWS SageMaker to mimic cognitive thinking, improving data analysis and productivity by 17%.",
-    description3: "● Implemented containerization with Docker and leveraged MPP frameworks for scalable AI/ML model deployment, ensuring robust performance and efficiency across financial services.",
-    description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency."
-},
+    const worktimeline = [
+    
+    {
+        jobtitle: "AI/ML Ops Co-op",
+        where: "Dark Matter Technologies",
+        date: "July - 2023 to December - 2023",
+        description1: "●Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
+        description2: "● Deployed machine learning models via AWS SageMaker to mimic cognitive thinking, improving data analysis and productivity by 17%.",
+        description3: "● Implemented containerization with Docker and leveraged MPP frameworks for scalable AI/ML model deployment, ensuring robust performance and efficiency across financial services.",
+        description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency."
+    },
     {
         jobtitle: "Data Scientist",
         where: "Digital Pass",
@@ -133,6 +135,36 @@ const skills = [{
 ];
 
 const dataportfolio = [
+    {
+        img: "https://leehallwriter.com/wp-content/uploads/2021/03/gr-.jpg",
+        description: "Developed a real-time data pipeline for GoodReads API data processing and analytics using ETL jobs and Redshift warehouse.",
+        link: "https://github.com/ris3abh/The_GoodReads_Pipeline",
+    },
+    {
+        img: "https://assets.intersystems.com/dims4/default/b9afc6f/2147483647/strip/true/crop/780x422+0+0/resize/780x422!/format/webp/quality/90/?url=http%3A%2F%2Finter-systems-brightspot.s3.amazonaws.com%2F26%2Fbd%2F6a6aa762425f87ad7d5c2fe65f8c%2Fawslogo-image.jpg",
+        description: "Built an Airflow-orchestrated ETL pipeline using AWS EMR and Spark for processing delivery deadline data.",
+        link: "https://github.com/ris3abh/ETL-pipeline-using-Airflow-and-AWS-EMR",
+    },
+    {
+        img: "https://www.callcentrehelper.com/images/stories/2007/05/pie-segment-760.jpg",
+        description: "Developed predictive models for family size estimation based on customer attributes and purchase patterns.",
+        link: "https://github.com/ris3abh/customer_segmentation",
+    },
+    {
+        img: "https://cdn-copjn.nitrocdn.com/MPSySGIBVHyrabywLcubwpqTtkOwocIm/assets/images/optimized/rev-23d1311/attorneybrianwhite.com/wp-content/uploads/2021/01/Car-Crash-with-police-660523594_1258x839.jpeg",
+        description: "Analyzed crash data and developed ML models using XGBoost, CatBoost, and LightGBM to predict injury severity.",
+        link: "https://github.com/ris3abh/Collisions_prediction",
+    },
+    {
+        img: "https://www.thegreatapps.com/application/upload/Apps/2024/05/home-credit-personal-loan-app-172.png",
+        description: "Implemented credit risk assessment models for Home Credit Group to expand financial inclusion for unbanked populations.",
+        link: "https://github.com/ris3abh/Home-Credit-Default-Risk",
+    },
+    {
+        img: "https://media.npr.org/assets/img/2023/11/22/maestro_20221020_23442r_custom-ab20c21b4f3159fbc479d70bca9984b04d30ec8b.jpg?s=1100&c=85&f=webp",
+        description: "Created MAESTRO.ai, an automated music production system using WaveNet, GANs, and transformer models for real-time audio processing.",
+        link: "https://github.com/ris3abh/MAESTRO",
+    },
     {
         img: "https://imgs.search.brave.com/mp2xdVuOGfbFPTUzDfLUVVZKpyRSb3b_1Yz_cHE8VXM/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzA1L0J1cm5vdXRf/b3BzX29uX01hbmd1/bV9GaXJlX01jQ2Fs/bF9TbW9rZWp1bXBl/cnMuanBn",
         description: "Enhanced wildfire dataset quality and detection precision using advanced preprocessing and AI models, culminating in high-accuracy wildfire tracing and hazard monitoring.",

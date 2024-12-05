@@ -1,28 +1,39 @@
 :root {
-    /* Dark theme defaults */
-    --bg-color: #0a192f; /* Deep navy */
-    --primary-color: #00b4d8; /* Bright teal */
-    --primary-color2: #023e8a; /* Indigo */
-    --secondary-color: #48cae4; /* Lighter teal */
-    --menu-color1: #9b5de5; /* Soft purple */
-    --text-color1: #ccd6f6; /* Light gray */
-    --text-color: #ccd6f6; /* Light gray */
-    --text-color-2: #ccd6f6; /* Light gray, could adjust if needed */
-    --text-color-3: #0077b6; /* Blue */
-    --overlay-color: rgba(10,25,47,0.63); /* Transparent deep navy */
+    /* Modern Dark Theme Defaults */
+    --bg-color: #0f172a; /* Rich dark blue background */
+    --primary-color: #06b6d4; /* Vibrant cyan */
+    --primary-color2: #3b82f6; /* Bright blue */
+    --secondary-color: #8b5cf6; /* Vibrant purple */
+    --menu-color1: #f472b6; /* Pink */
+    --text-color1: #f1f5f9; /* Crisp white */
+    --text-color: #f1f5f9; /* Crisp white */
+    --text-color-2: #e2e8f0; /* Soft white */
+    --text-color-3: #60a5fa; /* Light blue */
+    --overlay-color: rgba(15, 23, 42, 0.8); /* Transparent dark blue */
+    
+    /* Gradient Colors */
+    --gradient-1: linear-gradient(45deg, #06b6d4, #3b82f6);
+    --gradient-2: linear-gradient(135deg, #8b5cf6, #f472b6);
+    
+    /* Shadow */
+    --box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 [data-theme="light"] {
-    /* Light theme overrides */
-    --bg-color: #f8f9fa; /* Very light gray */
-    --primary-color: #90e0ef; /* Sky blue */
-    --primary-color2: #ade8f4; /* Soft sky blue */
-    --secondary-color: #caffbf; /* Soft lime */
-    --menu-color1: #f15bb5; /* Lavender */
-    --text-color: #495057; /* Dark slate gray */
-    --text-color-2: #495057; /* Dark slate gray */
-    --text-color-3: #fcbf49; /* Soft orange */
-    --overlay-color: rgba(248,249,250,0.70); /* Slightly transparent light gray */
+    /* Modern Light Theme */
+    --bg-color: #ffffff; /* Pure white */
+    --primary-color: #0ea5e9; /* Sky blue */
+    --primary-color2: #6366f1; /* Indigo */
+    --secondary-color: #a855f7; /* Purple */
+    --menu-color1: #ec4899; /* Pink */
+    --text-color: #0f172a; /* Dark blue */
+    --text-color-2: #1e293b; /* Slate */
+    --text-color-3: #3b82f6; /* Blue */
+    --overlay-color: rgba(255, 255, 255, 0.9);
+    
+    /* Light Theme Gradients */
+    --gradient-1: linear-gradient(45deg, #0ea5e9, #6366f1);
+    --gradient-2: linear-gradient(135deg, #a855f7, #ec4899);
 }
 
 html,
