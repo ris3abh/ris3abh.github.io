@@ -110,6 +110,15 @@
     transition: all 0.3s ease-in-out;
 }
 
+.card-subtitle {
+    color: #fff !important; /* Using !important to override Bootstrap's text-muted */
+}
+
+/* Remove the text-muted class effect specifically for this component */
+.text-muted {
+    color: #fff !important;
+}
+
 .card:hover {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 4);
     transform: scale(1.05);
