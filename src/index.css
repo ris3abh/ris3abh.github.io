@@ -5,10 +5,12 @@
     --primary-color2: #3b82f6; /* Bright blue */
     --secondary-color: #8b5cf6; /* Vibrant purple */
     --menu-color1: #f472b6; /* Pink */
+    --pastel-purple: #966FD6;
     --text-color1: #f1f5f9; /* Crisp white */
     --text-color: #f1f5f9; /* Crisp white */
     --text-color-2: #e2e8f0; /* Soft white */
     --text-color-3: #60a5fa; /* Light blue */
+    --text-color4: #000; /* Dark blue */
     --overlay-color: rgba(15, 23, 42, 0.8); /* Transparent dark blue */
     
     /* Gradient Colors */
@@ -24,11 +26,13 @@
     --bg-color: #ffffff; /* Pure white */
     --primary-color: #0ea5e9; /* Sky blue */
     --primary-color2: #6366f1; /* Indigo */
-    --secondary-color: #a855f7; /* Purple */
+    --secondary-color: #7a00ed; /* Purple */
     --menu-color1: #ec4899; /* Pink */
+    --pastel-purple: #c098ff;
     --text-color: #0f172a; /* Dark blue */
     --text-color-2: #1e293b; /* Slate */
     --text-color-3: #3b82f6; /* Blue */
+    --text-color-4: #fff; /* Dark blue */
     --overlay-color: rgba(255, 255, 255, 0.9);
     
     /* Light Theme Gradients */

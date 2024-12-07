@@ -167,7 +167,7 @@ section {
 
 #button_p {
     background: var(--secondary-color);
-    color: var(--primary-color);
+    color: #fff;
 }
 
 #button_h:hover {

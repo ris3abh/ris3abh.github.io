@@ -222,6 +222,45 @@ const contactConfig = {
     YOUR_USER_ID: "gop9oZUBzzmNNxi4Z",
 };
 
+const blogContent = [
+    {
+        id: 1,
+        title: "DL Activation Functions",
+        summary: "Deep Learning Activation Functions & their mathematical implementation.",
+        date: "March 15, 2024",
+        readTime: "5 min read",
+        category: "Deep Learning",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*OGFvJgMe21_5fCzUUyLwrw.png",
+        platform: "Medium",
+        link: "https://medium.com/nerd-for-tech/deep-learning-activation-functions-their-mathematical-implementation-b620d536d39b?source=user_profile_page---------2-------------6045468c518a---------------",
+        tags: [""]
+    },
+    {
+        id: 2,
+        title: "Linear Regression(Maths and Code)",
+        summary: "Traditional ML- Linear Regression(Maths and Code)",
+        date: "March 10, 2024",
+        readTime: "7 min read",
+        category: "Machine Learning",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*MN9QQtVgKR0H_t-N",
+        platform: "Medium",
+        link: "https://medium.com/nerd-for-tech/traditional-ml-linear-regression-maths-and-code-ec67e25ea500",
+        tags: [""]
+    },
+    {
+        id: 3,
+        title: "Data Science Best Practices",
+        summary: "Essential practices for effective data science projects.",
+        date: "March 5, 2024",
+        readTime: "6 min read",
+        category: "Data Science",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*O5MXhx5F5ZFY_t-U.jpg",
+        platform: "Medium",
+        link: "https://medium.com/nerd-for-tech/maestro-ai-ai-powered-music-production-9fbe3deb34b2",
+        tags: [""]
+    }
+];
+
 const socialprofils = {
     github: "https://github.com/ris3abh",
     facebook: "/",
@@ -235,6 +274,7 @@ export {
     worktimeline,
     skills,
     introdata,
+    blogContent,
     contactConfig,
     socialprofils,
     logotext,
