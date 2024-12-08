@@ -65,17 +65,47 @@ const introdatai = {
     your_img_url: "[your-image-url]",
 };
 
-
-
 const dataabout = {
     title: "about my self",
-    aboutme: "Wassup!!",
-    aboutme1: "I'm a passionate Data Scientist with a deep expertise in leveraging cutting-edge technologies like TensorFlow, PyTorch, and Apache Spark to tackle complex data challenges and drive insights. My enthusiasm for technology extends beyond the professional realm—I'm an avid gamer, anime aficionado, and tech gadget enthusiast, always on the lookout for the next intriguing discovery.",
-    aboutme2: "With a blend of analytical prowess and a keen interest in the latest technological advancements, I bring a unique combination of technical skills and creativity to the table. I'm eager to join a dynamic team where I can contribute to meaningful projects and continue my journey of learning and innovation.",
-    aboutme3: "Looking forward to making data-driven decisions together!",
+    aboutme: "Wassup!",
+    aboutme1: "I’m a passionate Data Scientist with expertise in leveraging cutting-edge technologies to tackle complex data challenges and deliver impactful insights. My commitment to innovation extends beyond work—I'm an avid gamer, anime enthusiast, and tech gadget explorer, always staying curious and inspired.",
+    aboutme2: "With a strong foundation in analytical problem-solving and a keen eye on emerging trends, I combine technical proficiency with creativity to drive meaningful outcomes. I'm excited to contribute to forward-thinking projects and thrive in a dynamic team environment.",
+    aboutme3: "Let’s transform data into actionable insights and shape the future together!"
 };
 
-    const worktimeline = [
+const achievements = [
+    {
+        title: "AWS Certified Data Engineer Associate",
+        organization: "Amazon Web Services",
+        date: "2024",
+        icon: require("./assets/images/AWS-logo.png"),
+        link: "https://www.credly.com/badges/7772ed70-dfd7-495a-99d4-1eb3aad0f11a/linked_in_profile"
+    },
+    {
+        title: "Social Justice Hackathon Philadelphia Winner",
+        organization: "Drexel University",
+        date: "2023",
+        icon: require("./assets/images/SocialJustics.png"),
+        link: "https://bcert.me/bc/html/show-badge.html?b=ygfapcbs"
+    },
+    {
+        title: "Introduction to Machine Learning",
+        organization: "Duke University",
+        date: "2023",
+        icon: require('./assets/images/DukeUni.png'),
+        link: "https://www.coursera.org/account/accomplishments/certificate/9VCAFWUEE4S2"
+    },
+    {
+        title: "Neural Network and Deep Learning",
+        organization: "DeepLearning.ai",
+        date: "2020",
+        icon: require('./assets/images/DeepLearningAI.png'),
+        link: "https://www.coursera.org/account/accomplishments/certificate/CPK6H69Z4LWZ"
+    },
+    
+];
+
+const worktimeline =[
     {
         jobtitle: "Data Scientist",
         where: "Katbotz",
@@ -83,7 +113,11 @@ const dataabout = {
         description1: "● Developing and implementing SAP S/4HANA data integration solutions, optimizing business processes and improving system efficiency by 25%",
         description2: "● Building automated ETL pipelines for SAP BW/4HANA data warehousing, reducing data processing time by 40% and enhancing data quality",
         description3: "● Implementing machine learning models to analyze SAP transaction data, providing predictive insights for business decision-making",
-        description4: "● Creating real-time dashboards and analytics solutions using SAP Analytics Cloud, improving visibility into key business metrics"
+        description4: "● Creating real-time dashboards and analytics solutions using SAP Analytics Cloud, improving visibility into key business metrics",
+        id: 1,
+        title: "Katbotz",
+        logo: require("./assets/images/katbotz.png"),
+        link: "https://www.katbotz.com/"
     },
     {
         jobtitle: "Data Science Assistant",
@@ -92,34 +126,50 @@ const dataabout = {
         description1: "● Developed deep learning models to analyze MXene material properties and predict performance characteristics with 92% accuracy",
         description2: "● Implemented computer vision algorithms to process and analyze microscopy images of MXene samples, automating material analysis",
         description3: "● Created data pipelines to process experimental results from various characterization techniques, improving research efficiency by 30%",
-        description4: "● Collaborated with research team to develop predictive models for MXene synthesis optimization, reducing experimental iterations by 40%"
+        description4: "● Collaborated with research team to develop predictive models for MXene synthesis optimization, reducing experimental iterations by 40%",
+        id: 2,
+        title: "Drexel College of Engineering",
+        logo: require("./assets/images/drexel.png"),
+        link: "https://drexel.edu/engineering/"
     },
     {
         jobtitle: "AI/ML Ops Co-op",
         where: "Dark Matter Technologies",
         date: "July - 2023 to December - 2023",
-        description1: "●Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
+        description1: "● Led AIVA's A/B testing pipeline integration into loan processes with AWS CodeBuild and CodePipeline, boosting deployment speed and efficiency by 12%.",
         description2: "● Deployed machine learning models via AWS SageMaker to mimic cognitive thinking, improving data analysis and productivity by 17%.",
         description3: "● Implemented containerization with Docker and leveraged MPP frameworks for scalable AI/ML model deployment, ensuring robust performance and efficiency across financial services.",
-        description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency."
+        description4: "● Enhanced document verification by optimizing BERT and image processing pipelines(CI/CD) with AWS, increasing process accuracy and efficiency.",
+        id: 3,
+        title: "Dark Matter Technologies",
+        logo: require("./assets/images/dmt.png"),
+        link: "https://dmatter.com/"
     },
     {
         jobtitle: "Data Scientist",
         where: "Digital Pass",
         date: "June - 2021 to June - 2022",
         description1: "● Implemented Python-based sentiment analysis on a 50TB dataset from a NoSQL database (MongoDB) containing application data, achieving a 13% improvement in customer sentiment accuracy and insights.",
-        description2: "● Played a key role in the design and implementation of Azure-based data warehousing solutions,improving data analysis efficiency by 30%. Streamlined and maintained ETL processes using Python and Talend, facilitating efficient data transformation and loading.",
+        description2: "● Played a key role in the design and implementation of Azure-based data warehousing solutions, improving data analysis efficiency by 30%. Streamlined and maintained ETL processes using Python and Talend, facilitating efficient data transformation and loading.",
         description3: "● Mapped user interactions and enhancing content dissemination by leveraging graph theory to refine social media marketing approaches which led to marked improvements in audience engagement and campaign performance metrics by 18%.",
-        description4: "● Developed ETL processes utilizing Azure Data Factory and Python, improving data transformation and loading efficiency. Worked extensively with Azure SQL Database for data warehousing, contributing to a 30% improvement in data analysis efficiency."
+        description4: "● Developed ETL processes utilizing Azure Data Factory and Python, improving data transformation and loading efficiency. Worked extensively with Azure SQL Database for data warehousing, contributing to a 30% improvement in data analysis efficiency.",
+        id: 5,
+        title: "Digital Pass",
+        logo: require("./assets/images/DP.png"),
+        link: ""
     },
     {
         jobtitle: "Data Science Intern",
         where: "SK Enterprises",
         date: "November - 2020 to June - 2021",
-        description1: "● Enhanced product demand forecasting accuracy by applying predictive modeling and machine learning solutions to inform data-driven strategies and enhance operational efficiencies to inform data-driven strategies and enhance operational efficiencies by 7%.",
+        description1: "● Enhanced product demand forecasting accuracy by applying predictive modeling and machine learning solutions to inform data-driven strategies and enhance operational efficiencies by 7%.",
         description2: "● Developed a predictive system to monitor machine performance and downtime with a 94% accuracy rate, leading to a 14% increase in overall equipment effectiveness(OEE)",
         description3: "● Utilized statistical forecasting with LSTM to boost the accuracy of demand predictions for 36 products by 40%, directly contributing to more effective inventory management and customer satisfaction.", 
-        description4: "● Engineered and validated advanced quantitative models to optimize inventory management, significantly reducing overstock scenarios."
+        description4: "● Engineered and validated advanced quantitative models to optimize inventory management, significantly reducing overstock scenarios.",
+        id: 6,
+        title: "SK Enterprises",
+        logo: require("./assets/images/SK.png"),
+        link: ""
     },
     {
         jobtitle: "SDE Intern",
@@ -129,17 +179,24 @@ const dataabout = {
         description2: "● Engineered a robust backend API leveraging Node JS and MongoDB, ensuring seamless data exchange and operational integrity for user transactions and service bookings.",
         description3: "● Enhanced web application performance by 20% through strategic code optimization and the implementation of advanced caching techniques, leading to improved user experience and faster load times.",
         description4: "● Contributed to the creation of a user-friendly interface, incorporating dynamic search functionalities and real-time service status updates to facilitate easier navigation and engagement for users.",
-        
+        id: 4,
+        title: "Oyelazy",
+        logo: require("./assets/images/OyeLazy.png"),
+        link: "https://www.linkedin.com/company/oyelazy/"
     },
     {
         jobtitle: "SDE Intern",
-        where: "Resillience",
+        where: "Resilience",
         date: "May - 2020 to August - 2020",
         description1: "● Developed a comprehensive React JS and Node JS web application for online tuition classes targeting IIT aspirants, featuring an intuitive user interface and seamless course navigation.",
         description2: "● Implemented a cutting-edge live video streaming interface utilizing WebRTC, supporting both one-to-one and one-to-many conferencing options for interactive doubt clearing sessions.",
         description3: "● Architected a scalable backend API using Node JS and MongoDB, catering to the educational platform's requirements for content delivery, user management, and live session scheduling.",
         description4: "● Pioneered the integration of interactive whiteboard functionality within live video sessions, enabling real-time collaboration and problem-solving between instructors and students.",
-    },
+        id: 5,
+        title: "Resilience",
+        logo: require("./assets/images/Resillience.png"),
+        link: "https://www.resillience.in/"
+    }
 ];
 
 const skills = [{
@@ -350,61 +407,11 @@ const socialprofils = {
     twitter: "https://twitter.com/rishabhx11",
 };
 
-const WorkCompanies = [
-    {
-        id: 1,
-        title: "Katbotz",
-        logo: "https://www.katbotz.com/wp-content/uploads/2023/05/Logo1.jpg",
-        link: "https://www.katbotz.com/"
-    },
-    {
-        id: 2,
-        title: "Drexel College of Engineering" ,
-        logo: "https://drexel.edu/~/media/Images/engineering/home/logo-light2.ashx?h=88&w=340&hash=F76AA9E5196DBF9E0D605C138CF4F5381F0EE892",
-        link: "https://drexel.edu/engineering/"
-    },
-    {
-        id: 3,
-        title: "Dark Matter Technologies",
-        logo: "https://dmatter.com/wp-content/uploads/dark-matter-tech-logo.svg",
-        link: "https://dmatter.com/"
-    },
-    {
-        id: 4,
-        title: "Black Knight Financial Services",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/Black_Knight_logo.svg/440px-Black_Knight_logo.svg.png",
-        link: "https://www.linkedin.com/company/blackknight/posts/?feedView=all"
-    },
-    {
-        id: 5,
-        title: "Digital Pass",
-        logo: "https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-1/301114382_449813053856188_1049522377239561966_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=7iDK2AN_Hl0Q7kNvgFsKNeo&_nc_zt=24&_nc_ht=scontent-iad3-2.xx&_nc_gid=AhaMDXNBMBbDEODRhmifSUR&oh=00_AYAnT3VgGzag_-TZVZUaLqynxK_R7ZEIGzsSyzUiSGfIiw&oe=675A8BA0",
-        link: ""
-    },
-    {
-        id: 6,
-        title: "SK Enterprises",
-        logo: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fskenterprisesexpert.com%2F&psig=AOvVaw0OfSiAvNTMkecettbNcmUy&ust=1733685009095000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJji4IqulooDFQAAAAAdAAAAABAI",
-        link: ""
-    },
-    {
-        id: 4,
-        title: "Oyelazy",
-        logo: "https://lh3.googleusercontent.com/p/AF1QipNtRJYRgtDPiCymJbhc1voJxUFowehltZYUcCZd=s1360-w1360-h1020",
-        link: "https://www.linkedin.com/company/oyelazy/"
-    },
-    {
-        id: 5,
-        title: "Resilience",
-        logo: "https://res.cloudinary.com/rweb1/image/upload/v1600243274/Assets/images/Resillience-Logo-Small_tslub5.png",
-        link: "https://www.resillience.in/"
-    }
-];
-
 export {
     meta,
     dataabout,
     dataportfolio,
+    achievements,
     worktimeline,
     skills,
     introdata,
@@ -414,6 +421,5 @@ export {
     logotext,
     introdatai,
     structuredData,
-    metaData,
-    WorkCompanies
+    metaData
 };

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { Container, Row, Col } from "react-bootstrap";
-import {
-  dataabout,
-  meta,
-  worktimeline,
-  skills,
-} from "../../content_option";
+import { Container } from "react-bootstrap";
+import { dataabout, meta, worktimeline, skills } from "../../content_option";
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 export const About = () => {
+  const [expandedId, setExpandedId] = useState(null);
+
+  const toggleExpand = (id) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
     <HelmetProvider>
       <Container className="About-header">
@@ -18,75 +20,73 @@ export const About = () => {
           <title> About | {meta.title}</title>
           <meta name="description" content={meta.description} />
         </Helmet>
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="8">
-            <h1 className="display-4 mb-4">About me</h1>
-            <hr className="t_border my-4 ml-0 text-left" />
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">{dataabout.title}</h3>
-          </Col>
-          <Col lg="7" className="d-flex align-items-center">
-            <div>
-              <p>{dataabout.aboutme}</p>
-              <p>{dataabout.aboutme1}</p>
-              <p>{dataabout.aboutme2}</p>
-              <p>{dataabout.aboutme3}</p>
+        <br />
+        <br />
+        <br />
+        {/* About Section */}
+        <section className="about-section">
+          <h1 className="section-title">About Me</h1>
+          <div className="about-content">
+            <p>{dataabout.aboutme}</p>
+            <p>{dataabout.aboutme1}</p>
+            <p>{dataabout.aboutme2}</p>
+            <p>{dataabout.aboutme3}</p>
+          </div>
+        </section>
+        <br />
+        <br />
+        <br />
+        {/* Timeline Section */}
+        <section className="timeline-section">
+        <h2 className="section-title">Experience</h2>
+        <div className="timeline">
+          {worktimeline.map((data, i) => (
+            <div
+              key={i}
+              className={`timeline-item ${i % 2 === 0 ? "left" : "right"} ${expandedId === i ? "expanded" : ""}`}
+            >
+              <div className="timeline-date">
+                <span>{data.date}</span>
+              </div>
+              <div className="timeline-content" onClick={() => toggleExpand(i)}>
+                <div className="timeline-header">
+                  <h3>{data.jobtitle}</h3>
+                  <h4>{data.where}</h4>
+                  <button className="expand-btn">
+                    {expandedId === i ? <FaChevronUp /> : <FaChevronDown />}
+                  </button>
+                </div>
+                <div className="timeline-details">
+                  <p>{data.description1}</p>
+                  <p>{data.description2}</p>
+                  <p>{data.description3}</p>
+                  <p>{data.description4}</p>
+                </div>
+              </div>
             </div>
-          </Col>
-        </Row>
-        <Row className=" sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Work Timline</h3>
-          </Col>
-          <Col lg="7">
-            {worktimeline.map((data, i) => {
-              return (
-                <div className="card" key={i}>
-                  <div className="card-body">
-                    <h5 className="card-title">{data.jobtitle}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">
-                      {data.where}
-                    </h6>
-                    <h6 className="card-subtitle mb-2 text-muted">
-                      {data.date}
-                    </h6>
-                    <p className="card-text">{data.description1}</p>
-                    <p className="card-text">{data.description2}</p>
-                    <p className="card-text">{data.description3}</p>
-                    <p className="card-text">{data.description4}</p>
-                  </div>
+          ))}
+        </div>
+      </section>
+        <br />
+        <br />
+        <br />
+        {/* Skills Section */}
+        <section className="skills-section">
+          <h2 className="section-title">Skills</h2>
+          <div className="skills-grid">
+            {skills.map((skill, i) => (
+              <div key={i} className="skill-item">
+                <h4>{skill.name}</h4>
+                <div className="skill-bar">
+                  <div 
+                    className="skill-progress"
+                    style={{ width: `${skill.value}%` }}
+                  />
                 </div>
-              );
-            })}
-          </Col>
-        </Row>
-        <Row className="sec_sp">
-          <Col lg="5">
-            <h3 className="color_sec py-4">Skills</h3>
-          </Col>
-          <Col lg="7">
-            {skills.map((data, i) => {
-              return (
-                <div key={i}>
-                  <h3 className="progress-title">{data.name}</h3>
-                  <div className="progress">
-                    <div
-                      className="progress-bar"
-                      style={{
-                        width: `${data.value}%`,
-                      }}
-                    >
-                      <div className="progress-value">{data.value}%</div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </Col>
-        </Row>
+              </div>
+            ))}
+          </div>
+        </section>
       </Container>
     </HelmetProvider>
   );
