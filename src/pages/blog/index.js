@@ -54,6 +54,8 @@ export const BlogList = () => {
                     ))}
                 </div>
             </Container>
+            <center><h6>Made with ♥️ using React</h6></center>
+        <br />
         </HelmetProvider>
     );
 };

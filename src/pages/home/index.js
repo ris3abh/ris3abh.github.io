@@ -250,6 +250,9 @@ export const Home = () => {
         <br />
         <br />
             </section>
+        <center><h6>Made with ♥️ using React</h6></center>
+        <br />
+        <br />
         </HelmetProvider>
     );
 };
