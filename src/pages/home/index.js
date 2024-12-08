@@ -9,6 +9,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export const Home = () => {
+    const importAll = (requireContext) => requireContext.keys().map(requireContext);
+    const logos = importAll(require.context("../../assets/logos", false, /\.(png|jpe?g|svg)$/));
     const blogRef = useRef(null);
     const achievementRef = useRef(null);
 
@@ -19,7 +21,7 @@ export const Home = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 400,
         responsive: [
             {
                 breakpoint: 1024,
@@ -31,6 +33,37 @@ export const Home = () => {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 1,
+                }
+            }
+        ]
+    };
+
+    const sliderSettings1 = {
+        dots: false,
+        infinite: true,
+        speed: 3000,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 0, // Continuous scrolling
+        cssEase: "linear", // Smooth transition
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
                 }
             }
         ]
@@ -142,7 +175,20 @@ export const Home = () => {
                           </div>
                       ))}
                   </Slider>
-              </section>
+                </section>
+
+                <section className="skills-carousel">
+                    <div className="carousel-wrapper">
+                        <Slider {...sliderSettings1}>
+                            {logos.map((logo, index) => (
+                                <div key={index} className="skill-slide">
+                                    <img src={logo} alt={`Skill ${index + 1}`} className="skill-logo" />
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
+                </section>
+                  
 
                 <section className="featured-projects">
                     <h2 className="section-title">Featured Projects</h2>

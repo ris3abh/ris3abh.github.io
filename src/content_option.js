@@ -102,6 +102,13 @@ const achievements = [
         icon: require('./assets/images/DeepLearningAI.png'),
         link: "https://www.coursera.org/account/accomplishments/certificate/CPK6H69Z4LWZ"
     },
+    {
+        title: "Full-Stack Development With React Specialization",
+        organization: "Hong Kong University",
+        date: "2020",
+        icon: require('./assets/images/HKU.png'),
+        link: "https://www.coursera.org/account/accomplishments/specialization/certificate/46TCTSRKL9SW"
+    },
     
 ];
 
@@ -388,11 +395,11 @@ const blogContent = [
     },
     {
         id: 3,
-        title: "Data Science Best Practices",
-        summary: "Essential practices for effective data science projects.",
+        title: "AI-Powered Music Production",
+        summary: "Redefining music creation with artificial intelligence, one idea at a time.",
         date: "March 5, 2024",
         readTime: "6 min read",
-        category: "Data Science",
+        category: "Project Building",
         thumbnail: "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*O5MXhx5F5ZFY_t-U.jpg",
         platform: "Medium",
         link: "https://medium.com/nerd-for-tech/maestro-ai-ai-powered-music-production-9fbe3deb34b2",
