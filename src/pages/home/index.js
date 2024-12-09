@@ -21,7 +21,7 @@ export const Home = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 400,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -250,9 +250,6 @@ export const Home = () => {
         <br />
         <br />
             </section>
-        <center><h6>Made with ♥️ using React</h6></center>
-        <br />
-        <br />
         </HelmetProvider>
     );
 };

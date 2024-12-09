@@ -88,8 +88,8 @@ export const About = () => {
           </div>
         </section>
       </Container>
-      <center><h6>Made with ♥️ using React</h6></center>
-        <br />
+      <br />
+      <br />
     </HelmetProvider>
   );
 };

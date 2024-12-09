@@ -348,11 +348,11 @@ section {
 }
 
 .slick-dots li button:before {
-    color: var(--text-color);
+    color: var(--text-color1);
 }
 
 .slick-dots li.slick-active button:before {
-    color: var(--primary-color);
+    color: var(--primary-color2);
 }
 
 /* Projects Grid */
@@ -568,7 +568,7 @@ section {
 
 /* Ensure logos scale up or down */
 .skill-logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.4);
 }
 
 /* Responsive Design */
