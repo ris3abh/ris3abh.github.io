@@ -190,6 +190,22 @@ section {
     color: var(--primary-color)
 }
 
+.resume-section {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.job-seeking-text {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.resume-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
 .intro_sec .h_bg-image .block {
     bottom: 50vh;
     max-width: 220px;
@@ -330,6 +346,7 @@ section {
     text-decoration: none;
     transition: background 0.3s ease;
 }
+
 
 /* Custom styles for slider arrows and dots */
 .slick-prev,

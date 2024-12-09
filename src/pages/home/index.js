@@ -155,6 +155,21 @@ export const Home = () => {
                         </div>
                     </div>
                 </div>
+                <br />
+                <br />
+                <br />
+                {/* Add after the intro buttons */}
+                <div className="resume-section">
+                    <p className="job-seeking-text">I am actively seeking full-time job opportunities.</p>
+                    <a 
+                        href={require("../../assets/Resume.pdf")} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="ac_btn btn resume-btn"
+                    >
+                        View Resume
+                    </a>
+                </div>
 
                 {/* New sections start here */}
                 <section ref={achievementRef} className="achievements-section">
