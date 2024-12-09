@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import withRouter from "../hooks/withRouter";
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor  from "../hooks/AnimatedCursor";
@@ -37,6 +38,7 @@ export default function App() {
         <Headermain />
         <AppRoutes />
         <SpeedInsights />
+        <Analytics />
       </ScrollToTop>
     </Router>
   );
