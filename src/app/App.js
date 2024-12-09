@@ -5,6 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import withRouter from "../hooks/withRouter";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import AppRoutes from "./routes";
 import Headermain from "../header";
 import AnimatedCursor  from "../hooks/AnimatedCursor";
@@ -35,6 +36,7 @@ export default function App() {
       <ScrollToTop>
         <Headermain />
         <AppRoutes />
+        <SpeedInsights />
       </ScrollToTop>
     </Router>
   );

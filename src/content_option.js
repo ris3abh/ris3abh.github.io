@@ -267,7 +267,8 @@ const skills = [{
 
 const dataportfolio = [
     {
-        img: "https://leehallwriter.com/wp-content/uploads/2021/03/gr-.jpg",
+        // img: "https://leehallwriter.com/wp-content/uploads/2021/03/gr-.jpg",
+        img: "https://animesher.com/orig/2/211/2118/21184/animesher.com_drawing-book-steam-gif-2118450.gif",
         description: "Developed a real-time data pipeline for GoodReads API data processing and analytics using ETL jobs and Redshift warehouse.",
         link: "https://github.com/ris3abh/The_GoodReads_Pipeline",
         title: "GoodReads Data Pipeline Project"
