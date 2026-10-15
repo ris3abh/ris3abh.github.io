@@ -1,0 +1,59 @@
+---
+// Doodles that live around the hero name: a paper plane looping the sky, my laptop typing,
+// chai steaming, a robot waving hello, a Tampa palm and sparkles.
+---
+<div class="hart" aria-hidden="true">
+  <svg class="hart__sky" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice">
+    <path class="hart__trail" data-plane-path d="M-40 520 C 180 420, 160 160, 380 140 C 560 120, 560 300, 700 280 C 860 260, 820 70, 1000 90 C 1140 106, 1180 260, 1260 220" />
+    <g data-hero-plane><path d="M-14 4 L14 -6 L4 10 L1 4 Z M1 4 L-1 11 L3 7" fill="none" stroke="#f0b54a" stroke-width="2.4" stroke-linejoin="round" /></g>
+  </svg>
+
+  <!-- laptop with code typing -->
+  <svg class="hart__item hart__laptop" viewBox="0 0 140 100" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" data-hart>
+    <g filter="url(#wobble)">
+      <rect x="22" y="12" width="96" height="62" rx="5" />
+      <path d="M8 82 H132 L124 92 H16 Z" />
+    </g>
+    <g class="hart__code" stroke-width="3">
+      <path d="M34 28 H58" stroke="#3b57e8" /><path d="M64 28 H84" />
+      <path d="M40 40 H72" /><path d="M78 40 H96" stroke="#f0b54a" />
+      <path d="M40 52 H60" stroke="#3b57e8" /><path d="M66 52 H90" />
+    </g>
+    <rect class="hart__caret" x="34" y="58" width="6" height="9" fill="currentColor" stroke="none" />
+  </svg>
+
+  <!-- chai with steam -->
+  <svg class="hart__item hart__chai" viewBox="0 0 80 110" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" data-hart>
+    <g filter="url(#wobble)"><path d="M16 44 L64 44 L56 100 Q40 104 24 100 Z" /><path d="M18 56 L62 56 M20 70 L60 70 M22 84 L58 84" opacity=".5" /></g>
+    <path class="hart__steam" d="M32 36 q -7 -8 0 -14 q 7 -6 0 -14" /><path class="hart__steam hart__steam--b" d="M48 38 q -7 -8 0 -14 q 7 -6 0 -14" />
+  </svg>
+
+  <!-- robot waving -->
+  <svg class="hart__item hart__robot" viewBox="0 0 110 120" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" data-hart>
+    <g filter="url(#wobble)">
+      <rect x="26" y="34" width="58" height="46" rx="11" />
+      <path d="M55 34 V20" /><circle cx="55" cy="15" r="5" />
+      <circle cx="44" cy="54" r="5.5" /><circle cx="66" cy="54" r="5.5" />
+      <path d="M45 68 Q55 75 65 68" />
+      <path d="M26 58 H16" />
+      <path d="M38 80 L36 100 M72 80 L74 100 M28 100 H44 M66 100 H82" />
+    </g>
+    <circle cx="44" cy="54" r="1.8" fill="currentColor" /><circle cx="66" cy="54" r="1.8" fill="currentColor" />
+    <g class="hart__arm"><path d="M84 58 L98 44 M98 44 L94 34 M98 44 L106 38" /></g>
+  </svg>
+
+  <!-- tampa palm + sun -->
+  <svg class="hart__item hart__palm" viewBox="0 0 120 130" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" data-hart>
+    <circle class="hart__sun" cx="86" cy="34" r="16" stroke="#f0b54a" />
+    <g class="hart__fronds">
+      <path d="M46 126 Q 52 90 46 54" />
+      <path d="M46 54 q -18 -12 -36 -4 M46 54 q -8 -20 -28 -24 M46 54 q 6 -22 26 -26 M46 54 q 18 -8 34 4 M46 54 q -2 -14 -2 -30" />
+    </g>
+    <path d="M10 126 q 20 -6 40 0 t 40 0 t 30 0" stroke="#3b57e8" opacity=".8" />
+  </svg>
+
+  <!-- sparkles -->
+  {[["8%", "26%", 34], ["90%", "58%", 26], ["16%", "70%", 22], ["78%", "14%", 20]].map(([l, t, w], i) => (
+    <svg class="hart__spark" style={`left:${l};top:${t};width:${w}px;animation-delay:${i * 0.6}s`} viewBox="0 0 40 40"><path d="M20 2 Q22 18 38 20 Q22 22 20 38 Q18 22 2 20 Q18 18 20 2 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" /></svg>
+  ))}
+</div>

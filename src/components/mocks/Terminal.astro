@@ -1,0 +1,40 @@
+---
+// Engram: a real-looking macOS terminal running the paper's reproduction target.
+const rows = [
+  ["turns + jev", "6", "265", "77.0 %"],
+  ["engram v2", "3", "251", "77.5 %"],
+  ["engram v2", "20", "—", "82.4 %"],
+];
+---
+<div class="term" data-mock="terminal">
+  <div class="term__chrome">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="term__title">rishabh — ~/engram — zsh — 112×30</span>
+    <span class="term__kbd">⌘1</span>
+  </div>
+  <div class="term__tabs"><span class="is-on">zsh</span><span>python3.12</span><span>+</span></div>
+  <div class="term__body">
+    <p class="t-dim" data-t>Last login: Thu Oct 15 09:12:44 on ttys004</p>
+    <p data-t>
+      <span class="pl pl--user">rishabh</span><span class="pl pl--dir">~/engram</span><span class="pl pl--git">main ✓</span>
+      <span class="t-cmd" data-typed="make reproduce-v3">make reproduce-v3</span>
+    </p>
+    <p data-t><span class="t-blue">▸</span> stripping API keys from env <span class="t-dim">.................</span> <span class="t-ok">ok</span></p>
+    <p data-t><span class="t-blue">▸</span> fetching LoCoMo @ pinned revision <span class="t-dim">..........</span> <span class="t-ok">ok</span></p>
+    <p data-t><span class="t-blue">▸</span> fetching LongMemEval @ pinned revision <span class="t-dim">.....</span> <span class="t-ok">ok</span></p>
+    <p data-t><span class="t-blue">▸</span> rebuilding numbers.json from committed results</p>
+    <p data-t class="term__bar"><span class="bar"><b data-bar></b></span> <span data-pct>100%</span> <span class="t-dim">tables · figures · pdf</span></p>
+    <div class="term__table" data-t>
+      <div class="tr th"><span>system</span><span>k</span><span>tokens/q</span><span>LoCoMo</span></div>
+      {rows.map((r) => <div class="tr" data-row>{r.map((c) => <span>{c}</span>)}</div>)}
+    </div>
+    <p data-t data-check><span class="t-ok">✓</span> H1 non-inferior <span class="t-dim">Δ −0.5 pt · one-sided 95% bound −3.0 &gt; margin −5.0</span></p>
+    <p data-t data-check><span class="t-ok">✓</span> write cost <span class="t-amber">3,061× cheaper</span> <span class="t-dim">than LLM extraction</span></p>
+    <p data-t data-check><span class="t-ok">✓</span> check.py <span class="t-dim">every number traces to a result file · 0 API calls</span></p>
+    <p data-t data-check><span class="t-ok">✓</span> built <span class="t-link">paper_v3/when-does-selection-replace-extraction.pdf</span></p>
+    <p data-t>
+      <span class="pl pl--user">rishabh</span><span class="pl pl--dir">~/engram</span><span class="pl pl--git">main ✓</span>
+      <span class="caret"></span>
+    </p>
+  </div>
+</div>

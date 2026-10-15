@@ -1,0 +1,19 @@
+---
+import { DOODLES } from "../data/doodles";
+interface Props { name: string; class?: string; style?: string; stroke?: number; label?: string; sketch?: boolean; [k: string]: unknown }
+const { name, class: cls = "", style = "", stroke = 2.6, label, sketch = false, ...rest } = Astro.props;
+---
+<svg
+  class={`doodle ${cls}`}
+  style={style}
+  viewBox="0 0 100 100"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={stroke}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role={label ? "img" : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : "true"}
+  {...rest}
+><g filter={sketch ? "url(#wobble)" : undefined} set:html={DOODLES[name]} /></svg>

@@ -1,0 +1,67 @@
+---
+// The little face that lives in the nav. It rests as a tiny smiley; hover a link and it hops over,
+// changing costume: sparkles for about, a paper plane for journey, a hanging portrait for work,
+// and my socials for connect.
+import { SITE } from "../data/site";
+interface Props { active?: "about" | "work" | "connect" | "journey" }
+const { active } = Astro.props;
+const links = [
+  { id: "about", href: "/#about", t: "about" },
+  { id: "journey", href: "/#journey", t: "journey" },
+  { id: "work", href: "/work", t: "work" },
+  { id: "connect", href: "/#connect", t: "connect" },
+];
+const gh = SITE.socials.find((s) => s.label === "GitHub")!.href;
+const li = SITE.socials.find((s) => s.label === "LinkedIn")!.href;
+---
+<header class="hnav" data-hnav>
+  <div class="hnav__stage" aria-hidden="true">
+    <!-- work: hanging portrait frame -->
+    <div class="hdeco hdeco--work" data-hdeco="work">
+      <svg class="hd hd--strap" viewBox="0 0 40 70"><path d="M14 0 L12 52 M22 0 L24 48 M14 2 L22 2" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#wobble)" /></svg>
+      <svg class="hd hd--frame" viewBox="0 0 100 100"><rect x="8" y="8" width="84" height="84" rx="4" stroke="currentColor" stroke-width="4" fill="none" filter="url(#wobble)" /></svg>
+      <svg class="hd hd--spark" viewBox="0 0 40 30"><path d="M8 22 L2 18 M16 14 L12 6 M26 12 L26 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg>
+      <svg class="hd hd--cursor" viewBox="0 0 24 24"><path d="M4 3 L20 11 L13 13 L10 20 Z" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round" /></svg>
+    </div>
+    <!-- about: sparkles + label -->
+    <div class="hdeco hdeco--about" data-hdeco="about">
+      <svg class="hd hd--star" viewBox="0 0 40 40"><path d="M20 4 Q22 18 36 20 Q22 22 20 36 Q18 22 4 20 Q18 18 20 4 Z" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round" /></svg>
+      <svg class="hd hd--swirl" viewBox="0 0 40 50"><path d="M8 44 C 20 30, 34 20, 30 10 C 26 2, 14 8, 20 18" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" /></svg>
+      <svg class="hd hd--dash" viewBox="0 0 40 30"><path d="M4 8 L14 10 M10 22 L16 16 M24 26 L22 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg>
+      <span class="hd hd--label">the human</span>
+    </div>
+    <!-- journey: a paper plane loops the face -->
+    <div class="hdeco hdeco--journey" data-hdeco="journey">
+      <svg class="hd hd--loop" viewBox="0 0 120 80"><path d="M10 60 C 20 10, 100 6, 108 40 C 112 64, 70 70, 66 50" stroke="currentColor" stroke-width="2.4" fill="none" stroke-dasharray="3 6" stroke-linecap="round" /></svg>
+      <svg class="hd hd--plane" viewBox="0 0 24 24"><path d="M2 13.5 L22 6 L15 17 L12 13 Z M12 13 L10.5 19 L13.5 15.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round" /></svg>
+      <span class="hd hd--label">IDR → PHL → TPA</span>
+    </div>
+    <!-- connect: socials float up (real links) -->
+    <div class="hdeco hdeco--connect" data-hdeco="connect">
+      <a class="hd hd--soc" href={li} target="_blank" rel="noopener me" aria-label="LinkedIn" tabindex="-1"><span>in</span></a>
+      <a class="hd hd--soc" href={gh} target="_blank" rel="noopener me" aria-label="GitHub" tabindex="-1">
+        <svg viewBox="0 0 32 32"><path d="M16 4 C 9 4, 4 9, 4 16 C 4 22, 8 26, 12 28 L12 24 C 8 25, 8 22, 7 21 M20 28 L20 23 C 20 21, 19 20, 18 20 C 22 19, 25 17, 25 13 C 25 11, 24 10, 23 9 C 23 7, 23 6, 22 5 C 21 5, 19 6, 18 7 C 17 6.5, 15 6.5, 14 7 C 13 6, 11 5, 10 5 C 9 6, 9 7, 9 9 C 8 10, 7 11, 7 13 C 7 17, 10 19, 14 20 C 13 21, 12 22, 12 24 M20 28 C 24 26, 28 22, 28 16 C 28 9, 23 4, 16 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+      <a class="hd hd--soc" href={`mailto:${SITE.email}`} aria-label="Email" tabindex="-1">
+        <svg viewBox="0 0 32 32"><path d="M4 8 H28 V24 H4 Z M4 8 L16 18 L28 8" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+    <!-- the face itself -->
+    <svg class="hface" viewBox="0 0 100 100" data-hface>
+      <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" data-face-lines>
+        <path d="M24 46 C 16 30, 26 14, 40 18 C 44 8, 60 8, 64 16 C 74 10, 88 20, 80 34 C 86 40, 82 50, 76 48" />
+        <path d="M27 46 C 25 68, 37 86, 50 86 C 63 86, 75 70, 75 48" />
+        <path d="M42 66 Q 50 74 58 66" />
+      </g>
+      <circle cx="40" cy="55" r="3.6" fill="currentColor" /><circle cx="60" cy="55" r="3.6" fill="currentColor" />
+    </svg>
+  </div>
+  <nav class="hnav__links" aria-label="Primary">
+    {links.map((l) => (
+      <a href={l.href} class={active === l.id ? "is-on" : ""} aria-current={active === l.id ? "page" : undefined} data-hkey={l.id}>
+        {l.t}
+        <svg class="hnav__ring" viewBox="0 0 120 50" preserveAspectRatio="none" aria-hidden="true"><path d="M70 4 C 98 4, 118 13, 116 26 C 114 40, 88 47, 58 46 C 26 45, 4 38, 4 25 C 4 12, 28 4, 58 5 C 72 5, 84 6, 92 9" pathLength="1" /></svg>
+      </a>
+    ))}
+  </nav>
+</header>

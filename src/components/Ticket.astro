@@ -1,0 +1,28 @@
+---
+// Admit-one ticket to Tampa Bay, with a perforated stub. The current chapter.
+import TampaArt from "./TampaArt.astro";
+import type { Stop } from "../data/site";
+interface Props { s: Stop }
+const { s } = Astro.props;
+// a deterministic little QR-ish code for the stub
+const qr = Array.from({ length: 81 }, (_, i) => ((i * 37 + (i % 9) * 11) % 7 < 3 ? 1 : 0));
+[0, 1, 2, 9, 10, 11, 18, 19, 20, 6, 7, 8, 15, 16, 17, 24, 25, 26, 54, 55, 56, 63, 64, 65, 72, 73, 74].forEach((i) => (qr[i] = 1));
+---
+<article class="ticket" data-ticket>
+  <div class="ticket__main">
+    <div class="ticket__art"><TampaArt /></div>
+    <div class="ticket__info">
+      <p class="ticket__blurb">Packed up Philly and moved to Tampa Bay to build data &amp; AI at Spinutech. Sunsets, palm trees, and agents that check their own work.</p>
+      <p class="ticket__admit">ADMIT 1</p>
+      <p class="ticket__sub">Your ticket to see what I’m building now</p>
+      <p class="ticket__seat">PHL → TPA · {s.place}</p>
+      <p class="ticket__org">{s.org.toUpperCase()}</p>
+      <p class="ticket__year">{s.when}</p>
+    </div>
+  </div>
+  <div class="ticket__stub" aria-hidden="true">
+    <span class="ticket__stubtxt">Row DA&nbsp; Seat AI</span>
+    <span class="ticket__num">2025 0615 1</span>
+    <span class="ticket__qr">{qr.map((q) => <i class={q ? "on" : ""} />)}</span>
+  </div>
+</article>

@@ -1,0 +1,42 @@
+---
+import Terminal from "./mocks/Terminal.astro";
+import Paper from "./mocks/Paper.astro";
+import Sandbox from "./mocks/Sandbox.astro";
+import Graph from "./mocks/Graph.astro";
+import Dashboard from "./mocks/Dashboard.astro";
+import WarRoom from "./mocks/WarRoom.astro";
+import { FRAMES, PROJECTS, PAPER } from "../data/site";
+
+interface Props { slug: string; n?: string; side?: "l" | "r"; link?: boolean; level?: 1 | 2 }
+const { slug, n, side = "l", link = true, level = 2 } = Astro.props;
+const H = level === 1 ? "h1" : "h2";
+const f = FRAMES.find((x) => x.slug === slug)!;
+const p = slug === "paper" ? { ...PROJECTS[0], ...PAPER } : PROJECTS.find((x) => x.slug === slug)!;
+const id = slug === "paper" ? "paper" : slug;
+---
+<section class={`frame frame--work frame--${side}`} id={id} data-work={f.mock} aria-labelledby={`h-${id}`}>
+  <div class="work__pin" data-pin>
+    <p class="frame__label"><i>#</i> {n ? `${n} · ` : ""}{f.label}</p>
+    <div class="work__grid">
+      <div class="spec" data-spec>
+        <p class="spec__k">{p.kicker}</p>
+        <H class="spec__name" id={`h-${id}`}>{p.name}</H>
+        <p class="spec__tag">{p.tagline}</p>
+        <ul class="spec__facts">{p.facts.slice(0, 3).map((x) => <li>{x.replace(/`/g, "")}</li>)}</ul>
+        {link && (slug === "paper"
+          ? <a class="spec__link" href="https://arxiv.org/abs/2609.34227" target="_blank" rel="noopener">Read on arXiv ↗</a>
+          : <a class="spec__link" href={`/work/${slug}`}>Open case study →</a>)}
+        <div class="spec__progress" aria-hidden="true"><i data-progress></i></div>
+      </div>
+      <div class="stage">
+        {f.mock === "terminal" && <Terminal />}
+        {f.mock === "paper" && <Paper />}
+        {f.mock === "graph" && <Graph />}
+        {f.mock === "sandbox" && <Sandbox />}
+        {f.mock === "dashboard" && <Dashboard />}
+        {f.mock === "warroom" && <WarRoom />}
+        <p class="annot" style={f.noteAt} data-annot>{f.note}</p>
+      </div>
+    </div>
+  </div>
+</section>

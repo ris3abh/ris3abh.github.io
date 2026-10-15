@@ -1,0 +1,171 @@
+---
+import Base from "../layouts/Base.astro";
+import Doodle from "../components/Doodle.astro";
+import Badge from "../components/Badge.astro";
+import HeroArt from "../components/HeroArt.astro";
+import Ticket from "../components/Ticket.astro";
+import HangTag from "../components/HangTag.astro";
+import { SITE, PROJECTS, JOURNEY } from "../data/site";
+
+const words = ["check their own work", "remember what matters", "leave a trace", "close their own loops"];
+const chapters = [...JOURNEY].reverse();
+const mockOf: Record<string, string> = { engram: "terminal", archimedes: "node graph", omniharness: "live sandbox", "area-o1": "dashboard", rallion: "war room" };
+
+const quirks = [
+    { d: "chai", t: "chai > coffee" },
+  { d: "sparkle", t: "anime marathons" },
+  { d: "gamepad", t: "gamer at heart" },
+  { d: "chip", t: "gadget hoarder" },
+  { d: "duck", t: "rubber-duck debugger" },
+];
+
+const schema = [
+  { "@type": "ProfilePage", "@id": `${SITE.url}/#profile`, url: `${SITE.url}/`, name: SITE.title, mainEntity: { "@id": `${SITE.url}/#person` }, dateModified: "2026-10-15" },
+  {
+    "@type": "ScholarlyArticle",
+    headline: "When Does Selection Replace Extraction? A Pre-Registered Test of Agent Memory with a Typed Decision Model",
+    author: [{ "@id": `${SITE.url}/#person` }, { "@type": "Person", name: "Rishika Lall" }],
+    datePublished: "2026",
+    url: "https://arxiv.org/abs/2609.34227",
+    sameAs: ["https://doi.org/10.5281/zenodo.22985242"],
+  },
+];
+---
+
+<Base schema={schema}>
+  <!-- ============ HELLO ============ -->
+  <section class="frame frame--hero" id="hello" aria-labelledby="hero-name">
+    <HeroArt />
+    <div class="hero">
+      <p class="hero__meta" data-hero-in>AI research engineer · Tampa, FL · <span data-clock>--:--</span></p>
+      <p class="hero__hi hand" data-hero-in>hi, I'm</p>
+      <h1 class="hero__name" id="hero-name" data-name>Rishabh Sharma</h1>
+      <svg class="hero__scribble" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M8 26 C 90 8, 160 34, 250 20 S 420 6, 500 22 S 580 30, 592 16" pathLength="1" data-scribble /></svg>
+      <p class="hero__line" data-hero-in>I build agents that <span class="hand hand--rot" data-rotate={JSON.stringify(words)}>{words[0]}</span></p>
+      <p class="hero__sub" data-hero-in>
+        Data &amp; AI at Spinutech · first author of <a href="https://arxiv.org/abs/2609.34227" target="_blank" rel="noopener">Engram</a> on arXiv ·
+        paper reviewer · hackathon judge · tinkering on <a href="https://www.archimedes.run" target="_blank" rel="noopener">archimedes.run</a> after hours
+      </p>
+      <div class="hero__cta" data-hero-in>
+        <a class="btn btn--light" href="/work">See the work →</a>
+        <a class="btn btn--ghost" href="#journey">The journey ↓</a>
+      </div>
+    </div>
+
+    <div class="sticky sticky--a" data-sticky style="--r:-6deg"><p>ship it,<br />then prove it.</p><small>— R</small></div>
+    <div class="sticky sticky--b" data-sticky style="--r:4deg"><p>agents should close their own loops.</p><small>— R</small></div>
+    <div class="sticky sticky--c" data-sticky style="--r:-3deg"><p>keep the failed run on the record.</p><small>— R</small></div>
+
+    <span class="agent-cur agent-cur--a" data-hero-cur="a"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>archimedes</b></span>
+    <span class="agent-cur agent-cur--o" data-hero-cur="o"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>omni</b></span>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section class="frame frame--teaser" id="work" aria-labelledby="work-title">
+    <p class="frame__label"><i>#</i> 02 · selected-work.frame</p>
+    <div class="teaser__head">
+      <h2 id="work-title" class="teaser__title">Selected work</h2>
+      <a class="btn btn--light" href="/work">All projects →</a>
+    </div>
+    <div class="teaser__grid">
+      {PROJECTS.map((p, i) => (
+        <a class="tcard" href={`/work/${p.slug}`} data-tcard style={`--i:${i}`}>
+          <span class="tcard__n">0{i + 1}</span>
+          <span class="tcard__k">{p.kicker}</span>
+          <span class="tcard__name">{p.name}</span>
+          <span class="tcard__tag">{p.tagline}</span>
+          <span class="tcard__foot"><em>{mockOf[p.slug]}</em><b>open →</b></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ JOURNEY (newest first) ============ -->
+  <section class="frame frame--journey" id="journey" aria-labelledby="journey-title">
+    <p class="frame__label"><i>#</i> 03 · journey.frame</p>
+    <div class="journey__head">
+      <h2 id="journey-title" class="journey__title">The journey</h2>
+      <p>From Indore to Philly to Tampa Bay — and the things I kept from each chapter.</p>
+    </div>
+    <div class="route" data-route>
+      <svg class="route__svg" aria-hidden="true"><path class="route__bg" data-route-bg /><path class="route__fg" data-route-fg /></svg>
+      <span class="route__plane" data-plane aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 13.5 L22 6 Q24 5.5 23 7.5 L15 17 L12 13 Z M12 13 L10.5 19 L13.5 15.5" fill="currentColor" /></svg></span>
+      {chapters.map((s, i) => (
+        <div class={`chapter chapter--${i % 2 ? "r" : "l"} chapter--${s.kind}`} data-chapter>
+          <span class="stop__dot" data-anchor aria-hidden="true"></span>
+          <div class="chapter__obj">
+            {s.kind === "ticket" && <Ticket s={s} />}
+            {s.kind === "badge" && <Badge s={s} />}
+            {s.kind === "tag" && <HangTag org={s.org} role={s.role} when={s.when} place={s.place} code="DRX-MSDS" sticker="/img/drexel-dragon.png" stickerAlt="Drexel dragon" care={["book", "neural", "chai", "code", "sparkle"]} />}
+            {s.kind === "tags" && (
+              <div class="tagpair">
+                <HangTag org={s.org} role={s.role} when={s.when} logo={s.logo} code="DP-IDR" care={["chip", "neural", "code", "chai", "plant"]} />
+                {s.extra && <HangTag org={s.extra.org} role={s.extra.role} when={s.extra.when} logo={s.extra.logo} code="SK-IDR" small care={["kite", "code", "chai"]} />}
+              </div>
+            )}
+          </div>
+          <div class="chapter__notes" data-notes>
+            <p class="chapter__when">{s.when} · {s.place}</p>
+            <p class="chapter__k">notable work</p>
+            <ul>{s.notable.concat(s.extra?.notable ?? []).map((n) => <li>{n}</li>)}</ul>
+            <p class="chapter__learnt">{s.learnt}</p>
+            {s.id === "spinutech" && (
+              <div class="sticky sticky--after" style="--r:3deg"><p>after hours: archimedes.run — an open-source research agent I tinker on.</p><small>— R</small></div>
+            )}
+          </div>
+        </div>
+      ))}
+      <p class="route__end hand" data-anchor-end>you are here ✶ next stop: who knows</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="frame frame--about" id="about" aria-labelledby="about-title">
+    <p class="frame__label"><i>#</i> 04 · about.frame</p>
+    <div class="about__grid">
+      <div class="about__text">
+        <h2 id="about-title" class="about__title">What's his deal?</h2>
+        <p>
+          I started in classic data science — forecasting, ETL, warehouses — and slowly realised the interesting part was
+          the <em>loop</em>: who checks the model, who checks the checker.
+        </p>
+        <p>
+          Now I build agent harnesses, research engines and agent memory, and I test them the way a scientist would:
+          pre-registered, reproducible, with the failures kept in. By day I work on data and AI at Spinutech in Tampa;
+          after hours, archimedes.run.
+        </p>
+        <p class="hats hand">hats I wear → <span>AI research engineer</span> <span>paper reviewer</span> <span>hackathon judge &amp; mentor</span> <span>open-source tinkerer</span></p>
+      </div>
+      <div class="signals">
+        <div class="lcard lcard--heat">
+          <p class="lcard__k">archimedes-run · autonomous replications</p>
+          <div class="heat" role="img" aria-label="38 replication repositories created by Archimedes">{Array.from({ length: 52 }, (_, i) => <i class={i < 38 ? `on l${(i * 7) % 4}` : ""} />)}</div>
+          <p class="lcard__big"><span data-count="38">38</span> repos <small>written by the agent itself</small></p>
+        </div>
+        <div class="signals__row">
+          <div class="lcard lcard--dl"><p class="lcard__k">🤗 engram-eval</p><p class="lcard__big"><span data-count="775">775</span>+</p><p class="lcard__s">downloads</p></div>
+          <div class="lcard lcard--badge"><p class="lcard__k">judge &amp; mentor</p><p class="lcard__big">HackMIT</p><p class="lcard__s">’26 · HackPrinceton next</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONNECT ============ -->
+  <section class="frame frame--connect" id="connect" aria-labelledby="connect-title">
+    <p class="frame__label"><i>#</i> 05 · connect.frame</p>
+    <div class="card">
+      <div class="card__list">
+        <h2 id="connect-title">What I'm looking for</h2>
+        <label class="check"><input type="checkbox" /> <span>research-y engineering on agents</span></label>
+        <label class="check"><input type="checkbox" /> <span>systems that ship to real people</span></label>
+        <label class="check"><input type="checkbox" /> <span>a team that argues with data</span></label>
+        <a class="btn" href={`mailto:${SITE.email}?subject=Let's%20chat`}>Let's chat →</a>
+      </div>
+      <div class="card__box" data-hire title="click to run again">
+        <p class="mini"><span class="p">❯</span> <span data-type="python -m hire --candidate rishabh"></span></p>
+        <p class="mini out" data-out></p>
+        <Doodle name="robot" class="card__robot" stroke={2.6} />
+      </div>
+    </div>
+  </section>
+</Base>

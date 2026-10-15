@@ -1,0 +1,64 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectFrame from "../../components/ProjectFrame.astro";
+import { SITE, PROJECTS, MORE } from "../../data/site";
+
+const order = ["engram", "paper", "archimedes", "omniharness", "area-o1", "rallion"];
+const total = PROJECTS.length + MORE.reduce((n, g) => n + g.items.length, 0);
+
+const schema = [
+  {
+    "@type": "CollectionPage",
+    name: "Work — Rishabh Sharma",
+    url: `${SITE.url}/work`,
+    about: { "@id": `${SITE.url}/#person` },
+    hasPart: PROJECTS.map((p) => ({ "@type": "CreativeWork", name: p.name, url: `${SITE.url}/work/${p.slug}` })),
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Rishabh Sharma", item: `${SITE.url}/` },
+      { "@type": "ListItem", position: 2, name: "Work", item: `${SITE.url}/work` },
+    ],
+  },
+];
+---
+
+<Base
+  nav="work"
+  title="Work — agents, research systems and ML by Rishabh Sharma"
+  description="Engram, Archimedes, OmniHarness, Area O1, Rallion and more: agent harnesses, autonomous research, agent memory, ML and data engineering projects by Rishabh Sharma."
+  path="/work"
+  schema={schema}
+>
+  <section class="frame frame--pagehead">
+    <p class="frame__label"><i>#</i> work.board</p>
+    <h1 class="pagehead__title">Work</h1>
+    <p class="pagehead__sub">{total} projects. The top five run live below — scroll and they play. Everything else is further down the board.</p>
+    <nav class="pagehead__jump" aria-label="Jump to project">
+      {PROJECTS.map((p) => <a href={`#${p.slug}`}>{p.name}</a>)}
+      <a href="#more">More ↓</a>
+    </nav>
+  </section>
+
+  {order.map((slug, i) => <ProjectFrame slug={slug} n={String(i + 1).padStart(2, "0")} side={i % 2 ? "r" : "l"} />)}
+
+  <section class="frame frame--more" id="more" aria-labelledby="more-title">
+    <p class="frame__label"><i>#</i> more.frame</p>
+    <h2 id="more-title" class="lab__title">Everything else on the board</h2>
+    {MORE.map((g) => (
+      <div class="more__group">
+        <h3 class="more__h">{g.group} <span>{g.items.length}</span></h3>
+        <div class="lab__grid">
+          {g.items.map((l) => (
+            <a class="lcard lcard--repo" href={l.href} target="_blank" rel="noopener" data-lcard>
+              <p class="lcard__k">{l.tag} · {l.year}</p>
+              <p class="lcard__name">{l.name} <span>↗</span></p>
+              <p class="lcard__s">{l.note}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+</Base>

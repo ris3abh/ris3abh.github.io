@@ -1,0 +1,44 @@
+---
+// Rallion: signals become evidence-cited opportunities; nothing sends until a human approves.
+---
+<div class="war" data-mock="warroom">
+  <div class="war__top">
+    <span class="war__brand">rallion</span>
+    <span class="war__tab is-on">War room</span><span class="war__tab">Threads</span><span class="war__tab">Engine</span>
+    <span class="war__live"><i></i>3 new signals</span>
+  </div>
+  <div class="war__cols">
+    <section class="col">
+      <p class="col__h">Signals <span>3</span></p>
+      <div class="kc" data-sig="1"><em class="tag tag--fund">funding</em><b>Series B announced</b><small>fintech · 42 employees · 2h</small></div>
+      <div class="kc"><em class="tag tag--hire">hiring</em><b>4 data-engineering roles</b><small>logistics · 1d</small></div>
+      <div class="kc"><em class="tag tag--launch">launch</em><b>Public API v2 shipped</b><small>devtools · 3d</small></div>
+    </section>
+    <section class="col">
+      <p class="col__h">Opportunities <span data-opp-n>1</span></p>
+      <div class="kc kc--opp" data-opp>
+        <b>Data-platform modernisation</b>
+        <small>3 prospects qualified · GP + BALD</small>
+        <div class="kc__ev"><span>evidence ↗</span><span>evidence ↗</span></div>
+        <div class="kc__unc"><i style="--w:82%"></i><i style="--w:64%"></i><i style="--w:41%"></i></div>
+      </div>
+    </section>
+    <section class="col">
+      <p class="col__h">Approved <span data-approved-n>1</span></p>
+      <div class="kc kc--ok" data-approved><b>Data-platform modernisation</b><small>email first · paced 9–5 · caps on</small></div>
+    </section>
+    <section class="col col--thread">
+      <p class="col__h">Thread state</p>
+      {["discovered", "qualifying", "qualified", "contacted", "engaged"].map((s, i) => <p class="fsm" data-fsm={i}><i></i>{s}</p>)}
+      <p class="fsm fsm--x"><i></i>suppressed <small>· from any state</small></p>
+    </section>
+  </div>
+  <div class="war__dim" data-dim aria-hidden="true"></div>
+  <div class="war__modal" data-modal>
+    <p class="war__modal-k">Approve campaign?</p>
+    <p class="war__modal-t">Data-platform modernisation</p>
+    <ul><li>3 prospects · evidence cited</li><li>Email first, LinkedIn optional</li><li>Activity window 9–5 · per-channel caps</li></ul>
+    <div class="war__modal-b"><span>Cancel</span><span class="go" data-approve>Approve ✓</span></div>
+  </div>
+  <span class="agent-cur agent-cur--human" data-cur="war"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>rishabh</b></span>
+</div>

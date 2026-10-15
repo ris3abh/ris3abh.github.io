@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import Doodle from "../components/Doodle.astro";
+---
+<Base title="404 — page not found | Rishabh Sharma" description="This page wandered off." path="/404">
+  <section class="cs" style="text-align:center">
+    <div class="cs__sheet">
+      <p class="cs__kicker">error 404</p>
+      <h1>Page not found</h1>
+      <p class="cs__tag">This page wandered off. The robot is looking for it.</p>
+      <Doodle name="robot" style="width:120px;margin:0 auto;color:var(--ink)" />
+      <div class="cs__links" style="justify-content:center"><a href="/">back to the desk</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,66 @@
+---
+// The Engram paper, typeset like a beautiful arXiv first page. Every number on it is from the paper.
+const bars = [
+  { label: "turns + jev · k=6", v: 77.0 },
+  { label: "engram v2 · k=3", v: 77.5 },
+  { label: "engram v2 · k=20", v: 82.4 },
+];
+const min = 60, max = 85;
+---
+<div class="paper" data-mock="paper">
+  <div class="paper__crumb"><b>arXiv</b> › cs › arXiv:2609.34227 <span>[cs.CL] · v3 · Oct 2026</span></div>
+  <div class="paper__stack">
+    <div class="paper__page paper__page--back" aria-hidden="true">
+      <p class="pp-h">4 &nbsp; Results</p>
+      {Array.from({ length: 9 }, () => <i class="pp-l" />)}
+      <div class="pp-table">{Array.from({ length: 12 }, () => <i />)}</div>
+      {Array.from({ length: 6 }, () => <i class="pp-l" />)}
+    </div>
+    <article class="paper__page paper__page--front">
+      <span class="paper__side" aria-hidden="true">arXiv:2609.34227v3 [cs.CL] 2026</span>
+      <h3 class="paper__title" data-p="title">When Does Selection Replace Extraction? A Pre-Registered Test of Agent Memory with a Typed Decision Model</h3>
+      <p class="paper__auth" data-p="auth">Rishabh Sharma &nbsp;·&nbsp; Rishika Lall</p>
+      <div class="paper__abs" data-p="abs">
+        <p class="paper__abs-h">Abstract</p>
+        <p>
+          Does conversational memory for agents need LLM-extracted facts, or is selecting the right raw turns enough?
+          We test this under a pre-registered plan on held-out LoCoMo conversations and on LongMemEval.{" "}
+          <mark data-mark>Raw turns selected by one call to a typed decision model are non-inferior to LLM-extracted memory at matched context, while being 3,061× cheaper to write.</mark>{" "}
+          The context budget decides the answer: when the reader sees few items, selection holds its own; when it sees many, extraction is more accurate.
+        </p>
+      </div>
+      <div class="paper__cols">
+        <div class="paper__col">
+          <p class="pp-h">1 &nbsp; Introduction</p>
+          {Array.from({ length: 11 }, () => <i class="pp-l" />)}
+        </div>
+        <figure class="paper__fig" data-p="fig">
+          <svg viewBox="0 0 220 132" role="img" aria-label="Accuracy on held-out LoCoMo: turns+jev k=6 77.0%, engram v2 k=3 77.5%, engram v2 k=20 82.4%">
+            {[60, 70, 80].map((g) => {
+              const y = 112 - ((g - min) / (max - min)) * 96;
+              return <g><line x1="34" x2="214" y1={y} y2={y} class="fig-grid" /><text x="28" y={y + 3} class="fig-ax" text-anchor="end">{g}</text></g>;
+            })}
+            {bars.map((b, i) => {
+              const h = ((b.v - min) / (max - min)) * 96;
+              const x = 50 + i * 58;
+              return (
+                <g>
+                  <rect x={x} y={112 - h} width="36" height={h} rx="2" class={`fig-bar fig-bar--${i}`} data-figbar style={`transform-origin:${x + 18}px 112px`} />
+                  <text x={x + 18} y={106 - h} class="fig-val" text-anchor="middle">{b.v.toFixed(1)}</text>
+                  <text x={x + 18} y="124" class="fig-ax" text-anchor="middle">{b.label.split(" · ")[1]}</text>
+                </g>
+              );
+            })}
+          </svg>
+          <figcaption><b>Figure 1.</b> Accuracy on 778 held-out LoCoMo questions. Selection matches extraction at small budgets.</figcaption>
+        </figure>
+      </div>
+      <span class="paper__stamp" data-p="stamp">PRE-REGISTERED</span>
+    </article>
+    <div class="paper__tags" data-p="tags">
+      <span>🤗 Daily Papers · Oct 6</span>
+      <span>cited by Xu &amp; Chen, 2026</span>
+      <span>DOI 10.5281/zenodo.22985242</span>
+    </div>
+  </div>
+</div>

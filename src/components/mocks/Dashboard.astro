@@ -1,0 +1,51 @@
+---
+// Area O1: local-first evidence dashboard. Sample data; criteria are the public O-1A categories.
+const crit = [
+  ["Original contributions", "banked", 3],
+  ["Scholarly articles", "banked", 2],
+  ["Judging the work of others", "building", 1],
+  ["Critical role", "building", 1],
+  ["Press about the work", "gap", 0],
+  ["Awards", "gap", 0],
+];
+---
+<div class="dash" data-mock="dashboard">
+  <aside class="dash__side">
+    <p class="dash__logo">◐ Area O1</p>
+    {["Scoreboard", "Inbox", "Claims", "Letters", "Rules"].map((n, i) => <p class={`dash__nav${i === 0 ? " is-on" : ""}`}>{n}{i === 1 && <span data-inbox-count>2</span>}</p>)}
+    <p class="dash__local"><i></i>127.0.0.1 · local only<br />no account · no telemetry</p>
+  </aside>
+  <main class="dash__main">
+    <div class="dash__head">
+      <div><p class="dash__k">Profile · O-1A</p><h4>Criteria scoreboard</h4></div>
+      <div class="dash__ring" data-ring><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" class="ring-bg" /><circle cx="18" cy="18" r="15.9" class="ring-fg" pathLength="100" data-ring-fg /></svg><span><b data-banked>3</b>/8</span></div>
+    </div>
+    <ul class="dash__crit">
+      {crit.map(([n, s, c]) => (
+        <li data-crit={n}>
+          <span class="dash__n">{n}</span>
+          <span class="dash__ev">{c} evidence</span>
+          <em class={`st st--${s}`} data-st>{s}</em>
+        </li>
+      ))}
+    </ul>
+  </main>
+  <aside class="dash__inbox">
+    <p class="dash__k">Evidence inbox</p>
+    <div class="ev-card" data-evcard>
+      <p class="ev-card__src"><span class="src src--hf">HF</span> huggingface.co · dataset</p>
+      <p class="ev-card__t">Judge, HackMIT 2026</p>
+      <blockquote data-quote>“…invited to serve as a judge and mentor…”</blockquote>
+      <div class="ev-card__btns"><span class="ok" data-accept>Accept</span><span>Dismiss</span></div>
+    </div>
+    <div class="ev-card ev-card--dim">
+      <p class="ev-card__src"><span class="src src--ax">arXiv</span> arxiv.org · 2609.34227</p>
+      <p class="ev-card__t">First-author preprint</p>
+    </div>
+    <div class="ev-card ev-card--dim">
+      <p class="ev-card__src"><span class="src src--gh">GH</span> github.com · omniHarness</p>
+      <p class="ev-card__t">Open-source harness · 7★</p>
+    </div>
+  </aside>
+  <span class="agent-cur" data-cur="o1"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>omni</b></span>
+</div>

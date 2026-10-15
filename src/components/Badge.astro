@@ -1,0 +1,24 @@
+---
+// An office ID badge on a lanyard. Swings with scroll speed and when you tug it.
+import type { Stop } from "../data/site";
+interface Props { s: Stop; access?: string }
+const { s, access = "LEVEL 2" } = Astro.props;
+---
+<figure class="badge" style={`--band:${s.band}`} data-badge>
+  <span class="badge__strap" aria-hidden="true"><i>{s.org} · {s.org} · {s.org}</i></span>
+  <span class="badge__clip" aria-hidden="true"></span>
+  <div class="badge__card">
+    <span class="badge__sheen" aria-hidden="true"></span>
+    <div class="badge__head">{s.logo ? <img src={s.logo} alt={`${s.org} logo`} loading="lazy" decoding="async" /> : <span class="badge__word">{s.org}</span>}</div>
+    <div class="badge__body">
+      <img class="badge__photo" src="/img/rishabh.webp" alt="Rishabh Sharma" width="80" height="80" loading="lazy" decoding="async" />
+      <p class="badge__name">Rishabh Sharma</p>
+      <p class="badge__role">{s.role}</p>
+      <dl class="badge__meta">
+        <div><dt>where</dt><dd>{s.place}</dd></div>
+        <div><dt>when</dt><dd>{s.when}</dd></div>
+      </dl>
+    </div>
+    <div class="badge__foot"><span class="badge__access">{access}</span><span class="badge__chip" aria-hidden="true"></span><span class="badge__id">ID DMT-2023</span></div>
+  </div>
+</figure>

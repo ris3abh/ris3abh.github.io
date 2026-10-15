@@ -1,0 +1,69 @@
+---
+// Archimedes: a node-graph studio view of the research loop, with a streaming run log.
+const nodes = [
+  { id: "prompt", x: 4, y: 40, t: "Prompt", s: "sparse MoE routing, low-resource", k: "input" },
+  { id: "ideate", x: 22, y: 14, t: "Ideation", s: "hypotheses", k: "agent" },
+  { id: "novelty", x: 22, y: 66, t: "Novelty gate", s: "arXiv · Semantic Scholar", k: "tool" },
+  { id: "plan", x: 42, y: 40, t: "Planner", s: "staged experiments", k: "agent" },
+  { id: "impl", x: 60, y: 14, t: "Implement", s: "Claude Code · sandbox", k: "tool" },
+  { id: "check", x: 60, y: 66, t: "Success check", s: "criteria vs metrics", k: "gate" },
+  { id: "reflect", x: 79, y: 66, t: "Reflector", s: "next stage / revise", k: "agent" },
+  { id: "write", x: 79, y: 14, t: "Writer", s: "LaTeX manuscript", k: "output" },
+];
+const edges = [
+  ["prompt", "ideate"], ["ideate", "novelty"], ["novelty", "plan"], ["plan", "impl"],
+  ["impl", "check"], ["check", "reflect"], ["reflect", "plan"], ["reflect", "write"],
+];
+const pos = Object.fromEntries(nodes.map((n) => [n.id, n]));
+const log = [
+  ["ideate", "proposing 3 hypotheses from the prompt"],
+  ["novelty", "scoring against arXiv + Semantic Scholar"],
+  ["plan", "stage 1/3 · baseline + ablation"],
+  ["impl", "claude code → writing train.py, running"],
+  ["check", "success criteria met for stage 1"],
+  ["reflect", "stage 2 needs a stronger baseline"],
+  ["write", "manuscript.tex · figures · failures kept"],
+];
+---
+<div class="graph" data-mock="graph">
+  <div class="graph__top">
+    <span class="graph__brand">◆ archimedes</span>
+    <span class="graph__mode">mode: <b>orchestrated</b></span>
+    <span class="graph__run" data-run>● run 0412 · live</span>
+  </div>
+  <div class="graph__body">
+    <div class="graph__canvas">
+      <svg class="graph__edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {edges.map(([a, b], i) => {
+          const A = pos[a], B = pos[b];
+          // nodes are 17% wide and 22% tall
+          const vertical = Math.abs(A.x - B.x) < 3;
+          const back = !vertical && B.x < A.x;
+          const cx = A.x + 8.5;
+          const d = vertical
+            ? B.y > A.y
+              ? `M ${cx} ${A.y + 22} C ${cx} ${A.y + 34}, ${cx} ${B.y - 12}, ${cx} ${B.y}`
+              : `M ${cx} ${A.y} C ${cx} ${A.y - 12}, ${cx} ${B.y + 34}, ${cx} ${B.y + 22}`
+            : back
+              ? `M ${A.x} ${A.y + 11} C ${A.x - 12} ${A.y + 36}, ${B.x + 8.5} ${B.y + 44}, ${B.x + 8.5} ${B.y + 22}`
+              : `M ${A.x + 17} ${A.y + 11} C ${A.x + 23} ${A.y + 11}, ${B.x - 6} ${B.y + 11}, ${B.x} ${B.y + 11}`;
+          return <path d={d} class={`edge${back ? " edge--back" : ""}`} data-edge={i} vector-effect="non-scaling-stroke" />;
+        })}
+      </svg>
+      {nodes.map((n) => (
+        <div class={`node node--${n.k}`} style={`left:${n.x}%;top:${n.y}%`} data-node={n.id}>
+          <span class="node__port node__port--in" /><span class="node__port node__port--out" />
+          <p class="node__k">{n.k}</p>
+          <p class="node__t">{n.t}</p>
+          <p class="node__s">{n.s}</p>
+          <span class="node__st" />
+        </div>
+      ))}
+    </div>
+    <aside class="graph__log">
+      <p class="graph__log-h">Run log</p>
+      {log.map(([k, t]) => <p class="ev" data-ev={k}><b>{k}</b>{t}</p>)}
+      <p class="ev ev--done" data-ev="done">→ pushed to <u>github.com/archimedes-run</u></p>
+    </aside>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+---
+// Tampa Bay at sunset: the Sunshine Skyway, palms, a sailboat and a pelican. Animated with CSS.
+---
+<svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated postcard of Tampa Bay at sunset: the Sunshine Skyway bridge, palm trees, a sailboat and a pelican">
+      <defs>
+        <linearGradient id="pc-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2c3d8f" />
+          <stop offset=".45" stop-color="#e9706a" />
+          <stop offset=".8" stop-color="#f6b25e" />
+        </linearGradient>
+        <linearGradient id="pc-sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3b57e8" />
+          <stop offset="1" stop-color="#1b2a6b" />
+        </linearGradient>
+        <clipPath id="pc-clip"><rect width="480" height="300" rx="6" /></clipPath>
+      </defs>
+      <g clip-path="url(#pc-clip)">
+        <rect width="480" height="300" fill="url(#pc-sky)" />
+        <!-- sun + rays -->
+        <g class="pc-sun" style="transform-origin:300px 176px">
+          {Array.from({ length: 12 }, (_, k) => <rect x="298" y="104" width="4" height="22" rx="2" fill="#ffd98a" opacity=".55" transform={`rotate(${k * 30} 300 176)`} />)}
+        </g>
+        <circle cx="300" cy="176" r="38" fill="#ffd36e" />
+        <!-- clouds -->
+        <g class="pc-cloud pc-cloud--a" fill="#fff" opacity=".75"><ellipse cx="90" cy="60" rx="34" ry="10" /><ellipse cx="110" cy="52" rx="20" ry="10" /></g>
+        <g class="pc-cloud pc-cloud--b" fill="#fff" opacity=".55"><ellipse cx="380" cy="80" rx="28" ry="8" /><ellipse cx="396" cy="73" rx="16" ry="8" /></g>
+        <!-- skyline -->
+        <g fill="#5a3f6e" opacity=".55">
+          <rect x="20" y="168" width="14" height="40" /><rect x="38" y="150" width="18" height="58" /><rect x="60" y="160" width="12" height="48" />
+          <rect x="76" y="140" width="16" height="68" /><path d="M76 140 L84 128 L92 140 Z" /><rect x="96" y="172" width="20" height="36" />
+        </g>
+        <!-- sea -->
+        <rect y="200" width="480" height="100" fill="url(#pc-sea)" />
+        <g stroke="#ffd36e" stroke-linecap="round" opacity=".7">{[[270, 210, 60], [278, 222, 44], [286, 234, 28], [292, 246, 16]].map(([x, y, w]) => <line x1={x} y1={y} x2={x + w} y2={y} stroke-width="3" />)}</g>
+        <g class="pc-waves" stroke="#9fb2ff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6">
+          {[222, 244, 268, 290].map((y, k) => <path d={`M${-40 + k * 10} ${y} q 15 -6 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0 t 30 0`} />)}
+        </g>
+        <!-- Sunshine Skyway: deck, twin pylons, yellow cable fans -->
+        <path d="M120 214 Q300 176 480 206" stroke="#20214a" stroke-width="5" fill="none" />
+        {[[250, 120], [350, 124]].map(([x, top]) => (
+          <g>
+            <rect x={x - 3} y={top} width="6" height="78" fill="#20214a" />
+            {Array.from({ length: 6 }, (_, k) => <line x1={x} y1={top + 6 + k * 4} x2={x - 70 + k * 10} y2={199 - k * 1.5} stroke="#ffcc33" stroke-width="1.3" />)}
+            {Array.from({ length: 6 }, (_, k) => <line x1={x} y1={top + 6 + k * 4} x2={x + 70 - k * 10} y2={196 - k * 1.5} stroke="#ffcc33" stroke-width="1.3" />)}
+          </g>
+        ))}
+        <!-- sailboat -->
+        <g class="pc-boat"><path d="M150 252 L190 252 L182 262 L158 262 Z" fill="#efebe4" /><path d="M170 250 L170 214 L190 248 Z" fill="#fff" /><path d="M168 250 L168 222 L152 248 Z" fill="#ffd36e" /></g>
+        <!-- pelican -->
+        <g class="pc-bird"><path d="M0 0 q 10 -10 20 0 q 10 -10 20 0" stroke="#20214a" stroke-width="2.6" fill="none" stroke-linecap="round" /></g>
+        <!-- palms -->
+        {[[30, 1], [452, -1]].map(([x, d]) => (
+          <g class="pc-palm" style={`transform-origin:${x}px 300px`}>
+            <path d={`M${x} 300 Q ${x + 6 * d} 250 ${x + 2 * d} 200`} stroke="#3a2a2a" stroke-width="7" fill="none" stroke-linecap="round" />
+            {[-60, -20, 20, 60, 100, 140].map((a) => (
+              <path d={`M${x + 2 * d} 200 q ${Math.cos((a * Math.PI) / 180) * 24} ${-18 + Math.sin((a * Math.PI) / 180) * 10} ${Math.cos((a * Math.PI) / 180) * 44} ${Math.sin((a * Math.PI) / 180) * 26 + 6}`} stroke="#1f5a3c" stroke-width="7" fill="none" stroke-linecap="round" />
+            ))}
+          </g>
+        ))}
+      </g>
+    </svg>

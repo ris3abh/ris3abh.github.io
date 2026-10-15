@@ -1,0 +1,63 @@
+---
+// OmniHarness: agent chat + sandboxed live preview. The build breaks, the agent reads the
+// error, patches it, and the verification gate only passes once the page actually renders.
+---
+<div class="sbx" data-mock="sandbox">
+  <div class="sbx__top">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="sbx__app">OmniHarness</span>
+    <span class="sbx__thread">thread #42 · chai-landing</span>
+    <span class="sbx__pill"><i></i>sandbox · docker</span>
+  </div>
+  <div class="sbx__split">
+    <aside class="sbx__chat">
+      <div class="msg msg--user" data-s="u1">Build a landing page for a neighbourhood chai shop. Make it feel warm.</div>
+      <div class="msg msg--agent" data-s="a1"><b>omni</b> Planning: nav, hero, menu, hours. Scaffolding with Vite.</div>
+      <div class="tool" data-s="t1"><span>write_file</span><code>src/App.tsx</code><em>+42</em></div>
+      <div class="tool" data-s="t2"><span>run</span><code>npm run dev</code><em class="bad">error</em></div>
+      <div class="msg msg--agent" data-s="a2"><b>omni</b> Build broke — <code>./Hero</code> doesn’t exist. Reading the overlay, creating it.</div>
+      <div class="tool" data-s="t3"><span>write_file</span><code>src/Hero.tsx</code><em>+28</em></div>
+      <div class="tool tool--ok" data-s="t4"><span>verify</span><code>preview renders · 0 console errors</code><em>pass</em></div>
+      <div class="msg msg--agent" data-s="a3"><b>omni</b> Done. It’s live in the preview — handing back.</div>
+      <div class="sbx__input"><span>Message omni…</span><kbd>⏎</kbd></div>
+    </aside>
+    <section class="sbx__preview">
+      <div class="browser">
+        <span class="browser__nav">‹ › ↻</span>
+        <span class="browser__url"><i>🔒</i> localhost:5173</span>
+        <span class="browser__gate" data-gate>gate: <b>passing</b></span>
+      </div>
+      <div class="viewport">
+        <div class="boot" data-s="boot"><span class="spin"></span>starting dev server…</div>
+        <div class="vite-err" data-s="err">
+          <p class="vite-err__h">[plugin:vite:import-analysis] Failed to resolve import "./Hero" from "src/App.tsx". Does the file exist?</p>
+          <pre>/app/src/App.tsx:2:17
+1 | import Nav from "./Nav";
+2 | import Hero from "./Hero";
+  |                  ^
+3 | import Menu from "./Menu";</pre>
+          <p class="vite-err__f">Click outside, press Esc key, or fix the code to dismiss.</p>
+        </div>
+        <div class="site" data-s="site">
+          <nav class="site__nav" data-site><b>Kettle &amp; Co.</b><span>Menu</span><span>Hours</span><span class="site__cta">Order</span></nav>
+          <div class="site__hero">
+            <div>
+              <p class="site__eyebrow" data-site>Since 2019 · Fishtown</p>
+              <h4 class="site__h" data-site>Chai, brewed slow.</h4>
+              <p class="site__sub" data-site>Masala, cardamom &amp; ginger — simmered with whole spices. Open 7am till late.</p>
+              <div class="site__btns" data-site><span>See the menu</span><span class="ghost">Find us →</span></div>
+            </div>
+            <div class="site__art" data-site>
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M28 34 L72 34 L65 86 Q50 90 35 86 Z" /><path d="M30 46 L70 46 M31.5 58 L68.5 58 M33 70 L67 70" opacity=".5" /><path d="M43 26 q-6 -7 0 -12 q6 -5 0 -10 M57 28 q-6 -7 0 -12 q6 -5 0 -10" /></svg>
+            </div>
+          </div>
+          <div class="site__menu">
+            {[["Masala", "$3.50", "black tea · clove · cardamom"], ["Cardamom", "$3.75", "green pod · jaggery"], ["Adrak", "$3.50", "fresh ginger · tulsi"]].map(([n, p, d]) => (
+              <div class="site__card" data-site><b>{n}</b><span>{p}</span><small>{d}</small></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
