@@ -7,10 +7,10 @@ const { org, role, when, place, logo, code, small = false, care = ["chai", "code
 <figure class={`htag${small ? " htag--small" : ""}`} data-htag>
   <svg class="htag__string" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 112 C 40 80, 18 60, 34 34 C 48 12, 92 14, 96 34 C 100 54, 70 58, 64 44 C 58 30, 66 20, 74 16" fill="none" stroke="#8a8780" stroke-width="5" stroke-linecap="round" filter="url(#wobble)" /></svg>
   <div class="htag__back" aria-hidden="true"></div>
-  {sticker && <img class="htag__sticker" src={sticker} alt={stickerAlt} loading="lazy" decoding="async" data-sticker />}
+  {sticker && <img class="htag__sticker" src={sticker} alt={stickerAlt} width="112" height="76" loading="lazy" decoding="async" data-sticker />}
   <div class="htag__card">
     <span class="htag__hole" aria-hidden="true"></span>
-    {logo && <img class="htag__logo" src={logo} alt={`${org} logo`} loading="lazy" decoding="async" />}
+    {logo && <img class="htag__logo" src={logo} alt={`${org} logo`} width="34" height="26" loading="lazy" decoding="async" />}
     <div class="htag__care" aria-hidden="true">{care.map((c) => <Doodle name={c} stroke={5} />)}</div>
     <p class="htag__org">{org}</p>
     <p class="htag__role">{role}{place && <> · {place}</>}</p>

@@ -51,17 +51,17 @@ function loader(): Promise<void> {
   const o = { v: 0 };
   return new Promise((resolve) => {
     const tl = gsap.timeline({ onComplete: () => { el.remove(); done(); resolve(); } });
-    tl.to(lines, { strokeDashoffset: 0, duration: 1.1, stagger: 0.12, ease: "power2.inOut" })
-      .to(o, { v: 100, duration: 1.6, ease: "power2.inOut", onUpdate: () => (n.textContent = String(Math.round(o.v))) }, 0)
-      .add(() => (word.textContent = "say hi →"), 1.5)
+    tl.to(lines, { strokeDashoffset: 0, duration: 0.7, stagger: 0.07, ease: "power2.inOut" })
+      .to(o, { v: 100, duration: 1, ease: "power2.inOut", onUpdate: () => (n.textContent = String(Math.round(o.v))) }, 0)
+      .add(() => (word.textContent = "say hi →"), 0.9)
       .add(() => {
         // fly the big sketch into the little nav face
         const target = $("[data-hface]")!.getBoundingClientRect(), from = face.getBoundingClientRect();
         gsap.to(face, { x: target.left + target.width / 2 - (from.left + from.width / 2), y: target.top + target.height / 2 - (from.top + from.height / 2), scale: target.width / from.width, duration: 0.8, ease: "power3.inOut" });
         gsap.to($(".loader__txt", el), { opacity: 0, y: 10, duration: 0.3 });
         gsap.to(el, { backgroundColor: "rgba(19,20,22,0)", duration: 0.6, delay: 0.35 });
-      }, 1.8)
-      .to({}, { duration: 0.9 });
+      }, 1.1)
+      .to({}, { duration: 0.8 });
   });
 }
 

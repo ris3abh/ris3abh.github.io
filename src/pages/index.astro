@@ -96,7 +96,7 @@ const schema = [
           <div class="chapter__obj">
             {s.kind === "ticket" && <Ticket s={s} />}
             {s.kind === "badge" && <Badge s={s} />}
-            {s.kind === "tag" && <HangTag org={s.org} role={s.role} when={s.when} place={s.place} code="DRX-MSDS" sticker="/img/drexel-dragon.png" stickerAlt="Drexel dragon" care={["book", "neural", "chai", "code", "sparkle"]} />}
+            {s.kind === "tag" && <HangTag org={s.org} role={s.role} when={s.when} place={s.place} code="DRX-MSDS" sticker="/img/drexel-dragon.webp" stickerAlt="Drexel dragon" care={["book", "neural", "chai", "code", "sparkle"]} />}
             {s.kind === "tags" && (
               <div class="tagpair">
                 <HangTag org={s.org} role={s.role} when={s.when} logo={s.logo} code="DP-IDR" care={["chip", "neural", "code", "chai", "plant"]} />

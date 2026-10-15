@@ -26,14 +26,14 @@ const schema = [
 
 <Base
   nav="work"
-  title="Work — agents, research systems and ML by Rishabh Sharma"
-  description="Engram, Archimedes, OmniHarness, Area O1, Rallion and more: agent harnesses, autonomous research, agent memory, ML and data engineering projects by Rishabh Sharma."
+  title="AI Agents & ML Projects | Rishabh Sharma"
+  description="Projects by Rishabh Sharma: Engram agent memory, the Archimedes research agent, OmniHarness, Area O1, Rallion, plus ML and data engineering work."
   path="/work"
   schema={schema}
 >
   <section class="frame frame--pagehead">
     <p class="frame__label"><i>#</i> work.board</p>
-    <h1 class="pagehead__title">Work</h1>
+    <h1 class="pagehead__title">Work <span class="pagehead__h1sub">AI agents, research systems &amp; ML by Rishabh Sharma</span></h1>
     <p class="pagehead__sub">{total} projects. The top five run live below — scroll and they play. Everything else is further down the board.</p>
     <nav class="pagehead__jump" aria-label="Jump to project">
       {PROJECTS.map((p) => <a href={`#${p.slug}`}>{p.name}</a>)}

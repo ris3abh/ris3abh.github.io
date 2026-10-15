@@ -35,7 +35,7 @@ const schema = [
 const doodle = { engram: "neural", archimedes: "book", omniharness: "robot", "area-o1": "sparkle", rallion: "headphones" }[p.slug] ?? "plant";
 ---
 
-<Base nav="work" title={`${p.name}: ${p.tagline.replace(/[.—]+$/, "")} | Rishabh Sharma`} description={p.summary} path={path} schema={schema} ogType="article">
+<Base nav="work" image={`/og/${p.slug}.png`} title={`${p.seoTitle} | Rishabh Sharma`} description={p.seoDescription} path={path} schema={schema} ogType="article">
   <article class="cs">
     <a class="cs__back" href="/work">← all work</a>
     <Doodle name={doodle} class="float f-cream" style="right:-6%;top:90px;width:110px" data-float=".4" />

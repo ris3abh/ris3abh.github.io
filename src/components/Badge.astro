@@ -9,7 +9,7 @@ const { s, access = "LEVEL 2" } = Astro.props;
   <span class="badge__clip" aria-hidden="true"></span>
   <div class="badge__card">
     <span class="badge__sheen" aria-hidden="true"></span>
-    <div class="badge__head">{s.logo ? <img src={s.logo} alt={`${s.org} logo`} loading="lazy" decoding="async" /> : <span class="badge__word">{s.org}</span>}</div>
+    <div class="badge__head">{s.logo ? <img src={s.logo} alt={`${s.org} logo`} width="58" height="30" loading="lazy" decoding="async" /> : <span class="badge__word">{s.org}</span>}</div>
     <div class="badge__body">
       <img class="badge__photo" src="/img/rishabh.webp" alt="Rishabh Sharma" width="80" height="80" loading="lazy" decoding="async" />
       <p class="badge__name">Rishabh Sharma</p>

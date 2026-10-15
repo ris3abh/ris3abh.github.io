@@ -1,9 +1,9 @@
 export const SITE = {
   url: "https://www.rishabhsharma.co",
   name: "Rishabh Sharma",
-  title: "Rishabh Sharma — AI Research Engineer building agents that check their own work",
+  title: "Rishabh Sharma — AI Research Engineer, Tampa FL",
   description:
-    "Rishabh Sharma is an AI research engineer at Spinutech in Tampa, FL. First author of the Engram agent-memory paper (arXiv 2609.34227), paper reviewer and hackathon judge, and builder of the open-source Archimedes, OmniHarness and Area O1.",
+    "Rishabh Sharma, AI research engineer at Spinutech in Tampa. Author of the Engram agent-memory paper; builds OmniHarness and Archimedes; paper reviewer.",
   email: "rishabh.sharma1103@gmail.com",
   location: "Tampa, FL",
   timezone: "America/New_York",
@@ -35,6 +35,8 @@ export const STATS = [
 
 export type Project = {
   slug: string;
+  seoTitle: string;
+  seoDescription: string;
   name: string;
   kicker: string;
   tagline: string;
@@ -51,6 +53,8 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug: "engram",
+    seoTitle: "Engram: Pre-Registered Agent Memory Study",
+    seoDescription: "Engram, a pre-registered test of AI agent memory: raw turns picked by a typed decision model match LLM-extracted memory and are 3,061× cheaper to write.",
     name: "Engram",
     kicker: "Agent memory · Paper",
     tagline: "Does agent memory need LLM-extracted facts — or just the right raw turns?",
@@ -93,6 +97,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "archimedes",
+    seoTitle: "Archimedes: Autonomous AI Research Agent",
+    seoDescription: "Archimedes is an open-source autonomous AI research agent that runs the research loop and leaves a trace you can verify: plan, code, metrics, failures.",
     name: "Archimedes",
     kicker: "Autonomous research · Open source",
     tagline: "Give it a prompt. It runs the research loop and hands you a trace you can verify.",
@@ -133,6 +139,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "omniharness",
+    seoTitle: "OmniHarness: Self-Verifying Agent Harness",
+    seoDescription: "OmniHarness is an open-source, self-verifying agent harness: sandboxes, subagents, memory, MCP, and a gate that blocks “done” while the build is broken.",
     name: "OmniHarness",
     kicker: "Agent harness · Open source",
     tagline: "A self-extending agent platform that builds, registers and verifies its own capabilities.",
@@ -173,6 +181,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "area-o1",
+    seoTitle: "Area O1: Open-Source O-1A Evidence Tool",
+    seoDescription: "Area O1 is a free, open-source, local-first workspace that turns papers, code, talks and judging into an O-1A / EB-1A evidence file traced to its sources.",
     name: "Area O1",
     kicker: "Local-first · Evidence engine",
     tagline: "An O-1A / EB-1A evidence file, built on your own computer — every claim traced to its source.",
@@ -209,6 +219,8 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: "rallion",
+    seoTitle: "Rallion: Human-Approved GTM Agent",
+    seoDescription: "Rallion turns live market signals into evidence-cited campaign opportunities that a human approves before any outreach is sent.",
     name: "Rallion",
     kicker: "GTM engine · Human-in-the-loop",
     tagline: "Live market signals in. Evidence-cited, human-approved outreach out.",

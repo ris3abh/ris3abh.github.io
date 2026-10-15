@@ -12,11 +12,15 @@ interface Props {
   schema?: Record<string, unknown>[];
   ogType?: string;
   nav?: "about" | "work" | "connect" | "journey";
+  noindex?: boolean;
+  image?: string;
 }
-const { title = SITE.title, description = SITE.description, path = "/", schema = [], ogType = "profile", nav } = Astro.props;
+const { title = SITE.title, description = SITE.description, path = "/", schema = [], ogType = "profile", nav, noindex = false, image } = Astro.props;
 
 const canonical = `${SITE.url}${path}`;
-const og = `${SITE.url}/og.png`;
+const FONTS = "https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Silkscreen&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap";
+const og = `${SITE.url}${image ?? "/og.png"}`;
+const headshot = `${SITE.url}/img/rishabh.webp`;
 const personId = `${SITE.url}/#person`;
 const jsonld = {
   "@context": "https://schema.org",
@@ -26,8 +30,13 @@ const jsonld = {
       "@id": personId,
       name: SITE.name,
       url: SITE.url,
-      image: og,
+      image: { "@type": "ImageObject", url: headshot, width: 320, height: 320 },
       jobTitle: "AI Research Engineer",
+      hasOccupation: [
+        { "@type": "Occupation", name: "AI Research Engineer", occupationLocation: { "@type": "City", name: "Tampa, FL" } },
+        { "@type": "Occupation", name: "Paper reviewer" },
+        { "@type": "Occupation", name: "Hackathon judge and mentor" },
+      ],
       description: SITE.description,
       email: `mailto:${SITE.email}`,
       address: { "@type": "PostalAddress", addressLocality: "Tampa", addressRegion: "FL", addressCountry: "US" },
@@ -36,6 +45,7 @@ const jsonld = {
       hasCredential: { "@type": "EducationalOccupationalCredential", name: "AWS Certified Data Engineer – Associate" },
       knowsAbout: ["AI agents", "Peer review", "Agent memory", "Autonomous research systems", "LLM evaluation", "Pre-registered experiments", "Model Context Protocol", "Machine learning", "Data engineering"],
       sameAs: SITE.socials.map((s) => s.href).filter((h) => !h.includes("arxiv")),
+      subjectOf: { "@type": "ScholarlyArticle", name: "When Does Selection Replace Extraction? A Pre-Registered Test of Agent Memory with a Typed Decision Model", url: "https://arxiv.org/abs/2609.34227" },
     },
     { "@type": "SoftwareSourceCode", "@id": "https://www.archimedes.run/#project", name: "archimedes.run", url: "https://www.archimedes.run", codeRepository: "https://github.com/archimedes-run/ai-research-engineer", author: { "@id": personId } },
     { "@type": "WebSite", "@id": `${SITE.url}/#website`, url: SITE.url, name: SITE.name, publisher: { "@id": personId } },
@@ -54,7 +64,7 @@ const jsonld = {
     <link rel="canonical" href={canonical} />
     <meta name="author" content={SITE.name} />
     <meta name="theme-color" content="#141516" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={title} />
@@ -72,12 +82,11 @@ const jsonld = {
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Silkscreen&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
-    />
+    <link rel="preload" as="style" href={FONTS} />
+    <link rel="stylesheet" href={FONTS} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={FONTS} /></noscript>
     <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
-    <script is:inline>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("rs-loaded")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("loaded")}catch(e){}</script>
+    <script is:inline>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("rs-loaded")||navigator.webdriver||/bot|crawl|spider|lighthouse|headless/i.test(navigator.userAgent)||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("loaded")}catch(e){}</script>
     <script is:inline defer src="/_vercel/insights/script.js"></script>
     <script is:inline defer src="/_vercel/speed-insights/script.js"></script>
   </head>
