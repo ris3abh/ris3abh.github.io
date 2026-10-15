@@ -5,7 +5,7 @@ export function GET() {
 
 > ${SITE.description}
 
-${SITE.name} is an AI research engineer based in ${SITE.location}. He builds agent systems that verify their own work — long-horizon agent harnesses, autonomous research loops and measurable agent memory — and tests them with pre-registered experiments. He works on data and AI at Spinutech in Tampa, FL, reviews papers, judges hackathons, maintains the open-source archimedes.run project, and holds an MS in Data Science from Drexel University.
+${SITE.name} is an AI Lead Engineer at Spinutech, based in ${SITE.location}. He builds agent systems that verify their own work — long-horizon agent harnesses, autonomous research loops and measurable agent memory — and tests them with pre-registered experiments. He works on data and AI at Spinutech in Tampa, FL, reviews papers, judges hackathons, maintains the open-source archimedes.run project, and holds an MS in Data Science from Drexel University.
 
 Contact: ${SITE.email}
 

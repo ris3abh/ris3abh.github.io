@@ -1,14 +1,14 @@
 export const SITE = {
   url: "https://www.rishabhsharma.co",
   name: "Rishabh Sharma",
-  title: "Rishabh Sharma — AI Research Engineer, Tampa FL",
+  title: "Rishabh Sharma — AI Lead Engineer at Spinutech, Tampa",
   description:
-    "Rishabh Sharma, AI research engineer at Spinutech in Tampa. Author of the Engram agent-memory paper; builds OmniHarness and Archimedes; paper reviewer.",
+    "Rishabh Sharma, AI Lead Engineer at Spinutech in Tampa. Author of the Engram agent-memory paper; builds OmniHarness and Archimedes; paper reviewer.",
   email: "rishabh.sharma1103@gmail.com",
   location: "Tampa, FL",
   timezone: "America/New_York",
   roles: [
-    "AI Research Engineer",
+    "AI Lead Engineer",
     "Agent Systems Builder",
     "Paper Reviewer",
     "Published Researcher",
@@ -359,7 +359,7 @@ export type Stop = {
 // Each stop is a different object, like the things you'd actually keep. Listed newest first; the page plays them oldest → newest.
 export const JOURNEY: Stop[] = [
   {
-    id: "spinutech", kind: "ticket", org: "Spinutech", role: "Data & AI", place: "Tampa, FL", when: "2025 – now",
+    id: "spinutech", kind: "ticket", org: "Spinutech", role: "AI Lead Engineer", place: "Tampa, FL", when: "2025 – now",
     notable: ["Data & AI platform", "Agentic go-to-market workflows", "Spinscribe content API"],
     learnt: "learnt the best agent is the one a team actually trusts",
   },
