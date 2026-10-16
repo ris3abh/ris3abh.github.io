@@ -293,12 +293,12 @@ export const STACK = [
 
 // Scroll-driven frames on /work and each case study (the "top" projects).
 export const FRAMES = [
-  { slug: "engram", mock: "terminal", label: "engram / terminal", note: "zero API calls — every number re-derived", noteAt: "right:-2%;top:62%" },
-  { slug: "paper", mock: "paper", label: "engram / the paper", note: "the sentence I'm proudest of", noteAt: "left:-4%;top:28%" },
-  { slug: "archimedes", mock: "graph", label: "archimedes / studio", note: "it keeps its failures", noteAt: "right:2%;top:-7%" },
-  { slug: "omniharness", mock: "sandbox", label: "omniharness / sandbox", note: "can't say “done” while the build is red", noteAt: "right:-1%;top:-7%" },
-  { slug: "area-o1", mock: "dashboard", label: "area-o1 / dashboard", note: "an invitation never counts as done", noteAt: "left:30%;bottom:-8%" },
-  { slug: "rallion", mock: "warroom", label: "rallion / war room", note: "nothing sends without me", noteAt: "right:2%;bottom:-8%" },
+  { slug: "engram", mock: "terminal", label: "engram / terminal", note: "zero API calls — every number re-derived", aim: "[data-aim]|right" },
+  { slug: "paper", mock: "paper", label: "engram / the paper", note: "the sentence I'm proudest of", aim: "[data-mark]|left|170" },
+  { slug: "archimedes", mock: "graph", label: "archimedes / studio", note: "it keeps its failures", aim: ".edge--back|bottom" },
+  { slug: "omniharness", mock: "sandbox", label: "omniharness / sandbox", note: "can't say “done” while the build is red", aim: "[data-gate]|top" },
+  { slug: "area-o1", mock: "dashboard", label: "area-o1 / dashboard", note: "an invitation never counts as done", aim: "[data-evcard]|top" },
+  { slug: "rallion", mock: "warroom", label: "rallion / war room", note: "nothing sends without me", aim: "[data-approved]|top" },
 ];
 
 export const PAPER = {

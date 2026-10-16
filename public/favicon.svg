@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#07060b"/><text x="32" y="42" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="28" fill="#c6ff3d">RS</text><circle cx="52" cy="12" r="5" fill="#ff2e88"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1f45"/><stop offset="1" stop-color="#3a2050"/></linearGradient></defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <circle cx="32" cy="70" r="34" fill="#ff7aa8" opacity=".22"/>
+  <g fill="none" stroke="#fff3f8" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 31 C 11 21, 18 11, 27 14 C 29 7, 39 7, 41 12 C 48 8, 57 15, 52 24 C 56 28, 53 34, 49 33"/>
+    <path d="M18 31 C 17 45, 24 55, 32 55 C 41 55, 48 46, 48 32"/>
+    <path d="M27 43 Q 32 48 37 43"/>
+  </g>
+  <circle cx="26.5" cy="36.5" r="2.4" fill="#fff3f8"/><circle cx="37.5" cy="36.5" r="2.4" fill="#fff3f8"/>
+  <ellipse cx="22.5" cy="42" rx="3" ry="1.8" fill="#ff7aa8" opacity=".85"/><ellipse cx="41.5" cy="42" rx="3" ry="1.8" fill="#ff7aa8" opacity=".85"/>
+  <path d="M51 8 l1.6 3.4 3.4 1.6 -3.4 1.6 -1.6 3.4 -1.6 -3.4 -3.4 -1.6 3.4 -1.6z" fill="#ffc871"/>
+</svg>

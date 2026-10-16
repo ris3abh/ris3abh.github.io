@@ -1,18 +1,63 @@
 ---
-// First-visit loader: my face sketches itself, a counter runs, then the face flies into the nav.
+// First-visit loader: a Naruto-style caricature of me sketches itself, two hands lock into the
+// Shadow Clone cross seal, clones poof in and out, then the real me flies into the nav.
+const clones = [
+  { x: -150, y: -30, r: -10 }, { x: 150, y: -30, r: 10 }, { x: -95, y: 95, r: -6 }, { x: 95, y: 95, r: 6 },
+];
 ---
 <div class="loader" data-loader aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <symbol id="ninja-face" viewBox="0 0 120 120">
+        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <!-- spiky hair -->
+          <path class="lf" d="M24 52 L10 40 L28 36 L16 18 L38 24 L40 6 L54 20 L64 2 L72 20 L88 6 L88 26 L108 18 L96 38 L112 44 L96 52" />
+          <!-- forehead protector: band + plate with a swirl -->
+          <path class="lf" d="M22 50 Q60 40 98 50 L98 60 Q60 50 22 60 Z" />
+          <rect class="lf" x="44" y="44" width="32" height="15" rx="3" />
+          <path class="lf" d="M60 52 m-4 0 a4 4 0 1 1 4 4 a6 6 0 1 1 6-6" />
+          <path class="lf" d="M98 54 L110 62 L106 50 M98 57 L114 70" />
+          <!-- face -->
+          <path class="lf" d="M24 60 C 22 84, 38 104, 60 104 C 82 104, 98 84, 96 60" />
+          <!-- determined eyes -->
+          <path class="lf" d="M38 70 L50 73" /><path class="lf" d="M82 70 L70 73" />
+          <path class="lf" d="M42 77 q4 -4 8 0" /><path class="lf" d="M70 77 q4 -4 8 0" />
+          <!-- whiskers -->
+          <path class="lf" d="M30 80 L40 82 M29 86 L40 87 M30 92 L40 91 M90 80 L80 82 M91 86 L80 87 M90 92 L80 91" />
+          <!-- big grin -->
+          <path class="lf" d="M46 88 Q60 100 74 88 Q60 94 46 88 Z" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
   <div class="loader__inner">
-    <svg class="loader__face" viewBox="0 0 100 100" data-loader-face>
-      <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#wobble)">
-        <path d="M24 46 C 16 30, 26 14, 40 18 C 44 8, 60 8, 64 16 C 74 10, 88 20, 80 34 C 86 40, 82 50, 76 48" />
-        <path d="M30 30 q 5 -7 10 -2 M48 24 q 6 -6 10 0 M62 30 q 6 -4 8 2" />
-        <path d="M27 46 C 25 68, 37 86, 50 86 C 63 86, 75 70, 75 48" />
-        <path d="M42 66 Q 50 74 58 66" />
-        <path d="M36 76 l1 1 M43 80 l1 1 M57 80 l1 1 M64 76 l1 1" />
-        <path d="M37 55 q 3 -3 6 0 M57 55 q 3 -3 6 0" />
-      </g>
-    </svg>
-    <p class="loader__txt"><span data-loader-word>sketching the board</span> <b data-loader-n>0</b></p>
+    <div class="loader__stage">
+      {clones.map((c) => (
+        <div class="loader__clone" style={`--x:${c.x}px;--y:${c.y}px;--r:${c.r}deg`} data-clone>
+          <svg viewBox="0 0 120 120"><use href="#ninja-face" /></svg>
+          <span class="loader__puff" data-puff><i /><i /><i /><i /><i /></span>
+        </div>
+      ))}
+      <svg class="loader__face" viewBox="0 0 120 120" data-loader-face><use href="#ninja-face" /></svg>
+      <!-- the Shadow Clone seal, sketched at face scale: one hand faces us with index + middle up,
+           the other is seen side-on so its two fingers stack into one line across them -->
+      <svg class="loader__hands" viewBox="26 -2 92 90" data-hands>
+        <g data-hand-v>
+          <path class="sk" d="M44 84 V66 Q40 62 40 54 V44 Q40 38 46 38 H62 Q67 38 67 44 V58 Q67 64 62 68 V84" />
+          <path class="sk" d="M44 41 V10 Q44 6 48 6 Q52 6 52 10 V41 Z" />
+          <path class="sk" d="M52 41 V6 Q52 2 56 2 Q60 2 60 6 V41 Z" />
+          <path class="ln" d="M45.5 10 Q48 8 50.5 10 M53.5 6 Q56 4 58.5 6 M45.5 34 H50.5 M53.5 33 H58.5 M60 45 Q64 44 66 47 M60 52 Q64 51 66.5 54" />
+          <path class="sk" d="M40 52 Q48 46 58 52 Q60 58 52 60 Q44 61 40 57" />
+        </g>
+        <g data-hand-h>
+          <path class="sk" d="M114 20 H100 Q92 12 80 15 Q74 17 74 24 Q70 28 73 32 Q70 37 75 41 Q80 47 92 45 Q98 44 100 41 H114" />
+          <path class="sk" d="M82 18 H38 Q33 18 33 22.5 Q33 27 38 27 H82 Z" />
+          <path class="ln" d="M35.5 19.5 Q38.5 18 41.5 19 M57 18.5 Q55.5 22.5 57 26.5 M68 18.5 Q66.5 22.5 68 26.5 M73.5 32 H79 M75 41 Q78 38 81 40 M84 15 Q92 16 96 22" />
+        </g>
+      </svg>
+      <span class="loader__puff loader__puff--big" data-bigpuff><i /><i /><i /><i /><i /><i /></span>
+    </div>
+    <p class="loader__txt"><span data-loader-word>focusing chakra…</span> <b data-loader-n>0</b></p>
   </div>
 </div>

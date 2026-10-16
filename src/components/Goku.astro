@@ -1,0 +1,50 @@
+---
+// Goku, drawn in the same line style as the loader's ninja. He peeks over the About cards;
+// tap him and he puts two fingers to his forehead and Instant-Transmissions to another card.
+// Every fourth tap he powers up into a Super Saiyan for a few seconds instead.
+---
+<div class="cameo goku" aria-hidden="true" data-goku>
+  <span class="cameo__win">
+    <svg class="cameo__head" viewBox="-4 -2 128 112" data-cameo-head>
+      <defs>
+        <linearGradient id="ssj-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3a6" /><stop offset=".6" stop-color="#ffd84a" /><stop offset="1" stop-color="#f0a92c" /></linearGradient>
+      </defs>
+      <g fill="var(--desk)" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ears, face -->
+        <path d="M32 66 C 24 60, 20 72, 26 79 C 28 82, 32 82, 34 80" />
+        <path d="M88 66 C 96 60, 100 72, 94 79 C 92 82, 88 82, 86 80" />
+        <path d="M31 56 C 30 76, 37 91, 49 99 Q 60 106 71 99 C 83 91, 90 76, 89 56 Z" />
+        <path fill="none" stroke-width="2" d="M28 70 q 3 2 3 6 M92 70 q -3 2 -3 6" />
+        <!-- the hair: spikes flaring out, bangs falling over the forehead -->
+        <path class="goku__hair" d="M32 64 Q 18 68 6 84 Q 13 64 20 56 Q 8 50 -3 47 Q 11 39 22 38 Q 10 24 8 5 Q 26 15 36 24 Q 40 7 55 -3 Q 56 11 60 20 Q 74 5 97 1 Q 88 15 84 26 Q 101 25 121 31 Q 106 38 96 42 Q 108 52 115 68 Q 100 58 90 60 L 88 64 L 86 52 Q 82 56 77 64 Q 75 54 70 50 Q 62 58 53 73 Q 54 60 52 52 Q 44 56 38 65 Q 38 56 35 52 Z" />
+        <path class="goku__strand" fill="none" stroke-width="1.8" d="M12 72 Q 17 64 24 60 M6 46 Q 15 44 24 44 M14 12 Q 24 22 32 30 M52 4 Q 50 14 50 24 M90 6 Q 84 14 78 26 M114 32 Q 104 36 94 38" />
+        <!-- stern brows, sharp eyes -->
+        <path class="goku__brow" fill="currentColor" d="M35 66 L 54 70.5 L 53 73.5 L 36 69.5 Z M85 66 L 66 70.5 L 67 73.5 L 84 69.5 Z" />
+        <g data-cameo-eyes>
+          <path stroke-width="2.4" d="M37 75 Q 46 71.5 55 76.5 L 53.5 82 Q 46 86 40 82 Z M83 75 Q 74 71.5 65 76.5 L 66.5 82 Q 74 86 80 82 Z" />
+          <path fill="none" stroke-width="3.6" d="M37 75 Q 46 71.5 55 76.5 M83 75 Q 74 71.5 65 76.5" />
+          <g data-cameo-pupils><g class="goku__iris" fill="currentColor" stroke="none"><circle cx="47.5" cy="79" r="4" /><circle cx="72.5" cy="79" r="4" /></g>
+            <g fill="var(--desk)" stroke="none"><circle cx="49" cy="77.6" r="1.2" /><circle cx="74" cy="77.6" r="1.2" /></g></g>
+        </g>
+        <!-- nose, the cocky half-smile -->
+        <path fill="none" stroke-width="2.2" d="M60 82 L 58 87.5 L 61.5 87.5" />
+        <path fill="none" d="M51 93 Q 60 98 70 92 M69 93.5 l 3 -2.5" />
+        <!-- Instant Transmission: index + middle finger to the forehead -->
+        <g class="goku__it" stroke-width="2.6" transform="translate(70 57) rotate(-38)" data-goku-it>
+          <path d="M-1 18 V 31 Q -1 42 9 42 Q 19 42 19 31 V 18 Z" />
+          <path d="M0 19 V 3 Q 0 -1 4 -1 Q 8 -1 8 3 V 19 Z" />
+          <path d="M8 19 V 1 Q 8 -3 12 -3 Q 16 -3 16 1 V 19 Z" />
+          <path fill="none" stroke-width="2" d="M-1 26 Q 6 23 11 27 M16 22 Q 20 23 19 28" />
+        </g>
+      </g>
+    </svg>
+  </span>
+  <svg class="cameo__hands" viewBox="0 0 120 16" data-cameo-hands>
+    <g fill="var(--desk)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round">
+      <path d="M14 13 V7 a4 4 0 0 1 8 0 V13 M22 13 V6 a4 4 0 0 1 8 0 V13 M30 13 V7 a4 4 0 0 1 8 0 V13" />
+      <path data-hand-r d="M82 13 V7 a4 4 0 0 1 8 0 V13 M90 13 V6 a4 4 0 0 1 8 0 V13 M98 13 V7 a4 4 0 0 1 8 0 V13" />
+    </g>
+  </svg>
+  <span class="goku__shun" data-goku-shun><i /><i /><i /><i /><i /><i /></span>
+  <span class="bubble cameo__say" data-cameo-say>hey, I'm Goku!</span>
+</div>

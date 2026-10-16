@@ -46,22 +46,41 @@ function loader(): Promise<void> {
   if (!el || document.documentElement.classList.contains("loaded")) { done(); return Promise.resolve(); }
   const face = $<SVGSVGElement>("[data-loader-face]", el)!;
   const n = $("[data-loader-n]", el)!, word = $("[data-loader-word]", el)!;
-  const lines = $$<SVGPathElement>("path", face);
+  // the face is drawn via <use>; animate the source symbol's lines so every copy draws in
+  const lines = $$<SVGGeometryElement>("#ninja-face .lf", el);
   lines.forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = `${L}`; p.style.strokeDashoffset = `${L}`; });
+  const hv = $("[data-hand-v]", el)!, hh = $("[data-hand-h]", el)!, hands = $("[data-hands]", el)!;
+  const clones = $$("[data-clone]", el), big = $("[data-bigpuff]", el)!;
   const o = { v: 0 };
   return new Promise((resolve) => {
     const tl = gsap.timeline({ onComplete: () => { el.remove(); done(); resolve(); } });
-    tl.to(lines, { strokeDashoffset: 0, duration: 0.7, stagger: 0.07, ease: "power2.inOut" })
-      .to(o, { v: 100, duration: 1, ease: "power2.inOut", onUpdate: () => (n.textContent = String(Math.round(o.v))) }, 0)
-      .add(() => (word.textContent = "say hi →"), 0.9)
+    tl.to(lines, { strokeDashoffset: 0, duration: 0.6, stagger: 0.035, ease: "power2.inOut" })
+      .to(o, { v: 100, duration: 2.1, ease: "power1.inOut", onUpdate: () => (n.textContent = String(Math.round(o.v))) }, 0)
+      // hands slide in from opposite sides and lock into the cross seal
+      .fromTo(hv, { x: -70, y: 40, rotate: -20, opacity: 0 }, { x: 0, y: 0, rotate: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.45)
+      .fromTo(hh, { x: 70, y: 40, rotate: 20, opacity: 0 }, { x: 0, y: 0, rotate: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.5)
+      .to(hands, { x: 3, duration: 0.05, repeat: 5, yoyo: true, ease: "none" }, 0.95)
+      .add(() => (word.textContent = "shadow clone jutsu!"), 0.95)
+      // poof: smoke bursts, clones pop out around me
+      .fromTo($$("i", big), { scale: 0, opacity: 0.9 }, { scale: () => gsap.utils.random(1.6, 2.6), opacity: 0, x: () => gsap.utils.random(-90, 90), y: () => gsap.utils.random(-70, 50), duration: 0.7, ease: "power2.out" }, 1.15)
+      .fromTo(clones, { x: 0, y: 0, scale: 0.4, opacity: 0, rotate: 0 }, {
+        x: (i, t) => parseFloat(getComputedStyle(t as Element).getPropertyValue("--x")),
+        y: (i, t) => parseFloat(getComputedStyle(t as Element).getPropertyValue("--y")),
+        rotate: (i, t) => parseFloat(getComputedStyle(t as Element).getPropertyValue("--r")),
+        scale: 0.62, opacity: 1, duration: 0.45, stagger: 0.05, ease: "back.out(2)",
+      }, 1.2)
+      .to(hands, { opacity: 0, y: 30, duration: 0.3 }, 1.4)
+      .add(() => (word.textContent = "say hi →"), 1.75)
+      // clones poof away
+      .add(() => clones.forEach((c) => gsap.fromTo($$("[data-puff] i", c), { scale: 0, opacity: 0.9 }, { scale: () => gsap.utils.random(1.4, 2.2), opacity: 0, x: () => gsap.utils.random(-30, 30), y: () => gsap.utils.random(-30, 20), duration: 0.5, ease: "power2.out" })), 1.95)
+      .to(clones, { scale: 0.2, opacity: 0, duration: 0.25 }, 2.0)
       .add(() => {
-        // fly the big sketch into the little nav face
         const target = $("[data-hface]")!.getBoundingClientRect(), from = face.getBoundingClientRect();
-        gsap.to(face, { x: target.left + target.width / 2 - (from.left + from.width / 2), y: target.top + target.height / 2 - (from.top + from.height / 2), scale: target.width / from.width, duration: 0.8, ease: "power3.inOut" });
+        gsap.to(face, { x: target.left + target.width / 2 - (from.left + from.width / 2), y: target.top + target.height / 2 - (from.top + from.height / 2), scale: target.width / from.width, duration: 0.7, ease: "power3.inOut" });
         gsap.to($(".loader__txt", el), { opacity: 0, y: 10, duration: 0.3 });
-        gsap.to(el, { backgroundColor: "rgba(19,20,22,0)", duration: 0.6, delay: 0.35 });
-      }, 1.1)
-      .to({}, { duration: 0.8 });
+        gsap.to(el, { backgroundColor: "rgba(15,18,38,0)", duration: 0.5, delay: 0.3 });
+      }, 2.2)
+      .to({}, { duration: 0.75 });
   });
 }
 
@@ -123,30 +142,64 @@ function hero() {
   name.innerHTML = name.textContent!.split("").map((c) => (c === " " ? " " : `<span class="ch">${c}</span>`)).join("");
   const chars = $$(".ch", name);
   chars.forEach((c) => c.addEventListener("pointerenter", () => gsap.fromTo(c, { y: 0, rotate: 0 }, { y: -18, rotate: gsap.utils.random(-14, 14), duration: 0.22, yoyo: true, repeat: 1, ease: "power2.out" })));
-  planeLoop();
-  if (reduced) { gsap.set("[data-scribble]", { strokeDashoffset: 0 }); return; }
+  if (reduced) { gsap.set("[data-scribble]", { strokeDashoffset: 0 }); peek(name, chars); return; }
   const tl = gsap.timeline({ paused: true });
   tl.from(chars, { yPercent: 110, rotate: () => gsap.utils.random(-20, 20), opacity: 0, stagger: 0.04, duration: 0.9, ease: "back.out(1.7)" })
     .to("[data-scribble]", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, "-=0.3")
     .from("[data-hero-in]", { y: 16, opacity: 0, stagger: 0.08, duration: 0.6, ease: "power3.out" }, 0.2)
-    .from("[data-hart]", { scale: 0, rotate: -20, opacity: 0, stagger: 0.1, duration: 0.7, ease: "back.out(2)" }, 0.6)
-    .from("[data-sticky]", { y: -80, scale: 1.25, opacity: 0, rotate: "+=14", stagger: 0.18, duration: 0.6, ease: "back.out(2)" }, 1);
+    .add(() => peek(name, chars), "+=0.2");
   const curA = $("[data-hero-cur=a]"), curO = $("[data-hero-cur=o]");
   if (curA && curO) {
     tl.from([curA, curO], { opacity: 0, duration: 0.4 }, 1.4).add(() => { const f = sec.getBoundingClientRect(); wander(curA, f); wander(curO, f); }, 1.4);
   }
   return tl;
 }
-/* a paper plane loops the hero sky forever */
-function planeLoop() {
-  const path = $<SVGPathElement>("[data-plane-path]"), plane = $("[data-hero-plane]");
-  if (!path || !plane || reduced) return;
-  const L = path.getTotalLength();
-  const o = { t: 0 };
-  gsap.to(o, { t: 1, duration: 14, repeat: -1, ease: "none", onUpdate: () => {
-    const a = path.getPointAtLength(o.t * L), b = path.getPointAtLength(Math.min(L, o.t * L + 2));
-    plane.setAttribute("transform", `translate(${a.x} ${a.y}) rotate(${(Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI})`);
-  } });
+/* the ninja peeks over a tall letter of the name; touch that letter or tap him and he hops to another */
+function peek(name: HTMLElement, chars: HTMLElement[]) {
+  const el = $("[data-peek]");
+  if (!el) return;
+  const head = $("[data-peek-head]", el)!, hands = $("[data-peek-hands]", el)!, eyes = $("[data-peek-eyes]", el)!, pupils = $("[data-peek-pupils]", el)!;
+  const hi = $(".hero__hi");
+  const tall = chars.filter((c) => /[RhbSl]/.test(c.textContent!));
+  let at: HTMLElement | null = null, busy = false;
+  const spots = () => {
+    let h: DOMRect | undefined;
+    if (hi) { const rg = document.createRange(); rg.selectNodeContents(hi); h = rg.getBoundingClientRect(); }
+    return tall.filter((c) => { const r = c.getBoundingClientRect(); return c !== at && !(h && r.right > h.left - 20 && r.left < h.right + 20); });
+  };
+  const place = (c: HTMLElement) => {
+    at = c;
+    const w = el.parentElement!.getBoundingClientRect(), r = c.getBoundingClientRect();
+    gsap.set(el, { x: r.left + r.width / 2 - w.left - el.offsetWidth / 2, opacity: 1 });
+  };
+  const up = () => gsap.timeline().to(head, { yPercent: 0, duration: reduced ? 0 : 0.5, ease: "back.out(2)" }).to(hands, { scaleY: 1, duration: reduced ? 0 : 0.15 }, reduced ? 0 : 0.25);
+  const hop = () => {
+    if (busy) return;
+    busy = true;
+    gsap.fromTo($$("[data-peek-puff] i", el), { scale: 0, opacity: 0.9, x: 0, y: 0 }, { scale: () => gsap.utils.random(1.3, 2), opacity: 0, x: () => gsap.utils.random(-30, 30), y: () => gsap.utils.random(-30, 10), duration: 0.5, ease: "power2.out" });
+    gsap.timeline({ onComplete: () => { busy = false; } })
+      .to(hands, { scaleY: 0, duration: 0.1 })
+      .to(head, { yPercent: 100, duration: 0.2, ease: "power2.in" }, 0)
+      .add(() => { const s = spots(); place(s[Math.floor(Math.random() * s.length)] ?? tall[0]); }, 0.45)
+      .add(up, 0.5);
+  };
+  gsap.set(head, { yPercent: 100 });
+  const first = spots();
+  place(first[first.length - 1] ?? tall[0]);
+  up();
+  head.addEventListener("click", hop);
+  tall.forEach((c) => c.addEventListener("pointerenter", () => c === at && hop()));
+  addEventListener("resize", () => at && place(at));
+  // eyes follow the cursor and blink now and then
+  addEventListener("pointermove", (e) => {
+    const r = head.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height * 0.85);
+    const d = Math.hypot(dx, dy) || 1;
+    gsap.to(pupils, { x: (dx / d) * 3, y: (dy / d) * 3, duration: 0.25, overwrite: true });
+  });
+  if (!reduced) {
+    const blink = () => gsap.to(eyes, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, onComplete: () => gsap.delayedCall(gsap.utils.random(2.5, 5), blink) });
+    gsap.delayedCall(2, blink);
+  }
 }
 function wander(cur: HTMLElement, f: DOMRect) {
   const go = () =>
@@ -310,6 +363,39 @@ function warroom(root: HTMLElement): Render {
   };
 }
 
+/* a handwritten note beside its mock, with a drawn arrow that lands on the exact thing it talks about.
+   data-annot = "selector|side|maxWidth": side is where the note sits relative to the target. */
+function aimer(root: HTMLElement, note: HTMLElement, svg: SVGSVGElement | HTMLElement) {
+  const [sel, side, maxw] = note.dataset.annot!.split("|");
+  const stage = note.parentElement!;
+  if (maxw) { note.style.maxWidth = `${maxw}px`; note.classList.add("annot--wrap"); }
+  const [line, head] = $$<SVGPathElement>("path", svg as HTMLElement);
+  return () => {
+    const tgt = $(sel, root);
+    if (!tgt) return;
+    const s = stage.getBoundingClientRect(), m = root.getBoundingClientRect(), r = tgt.getBoundingClientRect();
+    const t = { l: r.left - s.left, r: r.right - s.left, t: r.top - s.top, b: r.bottom - s.top, cx: r.left + r.width / 2 - s.left, cy: r.top + r.height / 2 - s.top };
+    const w = note.offsetWidth, h = note.offsetHeight, gap = 64;
+    const clampX = (x: number) => Math.max(-40, Math.min(s.width + 40 - w, x));
+    let x = 0, y = 0, a: [number, number], b: [number, number], bend: [number, number];
+    if (side === "right") { x = t.r + gap; y = t.cy - h - 6; a = [x - 6, y + h * 0.75]; b = [t.r + 6, t.cy]; bend = [0, -18]; }
+    else if (side === "left") {
+      // aim at the start of the target's last line (a highlight that wraps starts mid-line)
+      const rs = tgt.getClientRects(), last = rs[rs.length - 1], ly = last.top + last.height / 2 - s.top;
+      x = last.left - s.left - gap - w; y = ly - h - 4; a = [x + w + 2, y + h * 0.7]; b = [last.left - s.left - 6, ly]; bend = [4, -14];
+    }
+    else if (side === "top") { x = clampX(t.cx - w * 0.35); y = m.top - s.top - h - 34; a = [Math.min(x + w * 0.3, t.cx - 10), y + h + 4]; b = [t.cx, t.t - 6]; bend = [-22, 0]; }
+    else { x = clampX(t.cx - w * 0.35); y = m.bottom - s.top + 34; a = [Math.min(x + w * 0.3, t.cx - 10), y - 4]; b = [t.cx, t.b + 6]; bend = [-22, 0]; }
+    note.style.left = `${x}px`; note.style.top = `${y}px`;
+    const c = [(a[0] + b[0]) / 2 + bend[0], (a[1] + b[1]) / 2 + bend[1]];
+    line.setAttribute("d", `M${a[0]} ${a[1]} Q${c[0]} ${c[1]} ${b[0]} ${b[1]}`);
+    // arrowhead along the last segment of the curve
+    const ang = Math.atan2(b[1] - c[1], b[0] - c[0]), k = 10;
+    const p1 = [b[0] - k * Math.cos(ang - 0.5), b[1] - k * Math.sin(ang - 0.5)], p2 = [b[0] - k * Math.cos(ang + 0.5), b[1] - k * Math.sin(ang + 0.5)];
+    head.setAttribute("d", `M${p1[0]} ${p1[1]} L${b[0]} ${b[1]} L${p2[0]} ${p2[1]}`);
+  };
+}
+
 const MOCKS: Record<string, (r: HTMLElement) => Render> = { terminal, paper, sandbox, graph, dashboard, warroom };
 
 function work() {
@@ -319,12 +405,19 @@ function work() {
     if (!make) return;
     const render = make(root);
     const prog = $("[data-progress]", sec)!;
-    const annot = $("[data-annot]", sec);
+    const annot = $("[data-annot]", sec), arrow = $("[data-annot-arrow]", sec);
+    const aim = annot && arrow ? aimer(root, annot, arrow) : null;
     const apply = (p: number) => {
       render(p);
       prog.style.transform = `scaleX(${p})`;
-      if (annot) { annot.style.opacity = String(st(p, 0.85, 0.95)); annot.style.transform = `rotate(-4deg) translateY(${(1 - st(p, 0.85, 0.95)) * 10}px)`; }
+      if (annot && arrow) {
+        const o = st(p, 0.85, 0.95);
+        if (o > 0) aim!();
+        annot.style.opacity = arrow.style.opacity = String(o);
+        annot.style.translate = `0 ${(1 - o) * 10}px`;
+      }
     };
+    addEventListener("resize", () => annot && +annot.style.opacity > 0 && aim!());
     if (reduced) return apply(1);
     apply(0);
     const mm = gsap.matchMedia();
@@ -467,6 +560,128 @@ function reveals() {
   });
 }
 
+/* Goku and Luffy peek over the edge of something, like the hero ninja: eyes follow the pointer,
+   they blink, talk in a bubble, and move between spots with an entrance of their own */
+type Spot = { el: HTMLElement; at: number };
+function cameo(el: HTMLElement, host: HTMLElement, spots: () => Spot[]) {
+  const head = $("[data-cameo-head]", el)!, hands = $("[data-cameo-hands]", el)!, say = $("[data-cameo-say]", el)!;
+  const eyes = $("[data-cameo-eyes]", el)!, pupils = $("[data-cameo-pupils]", el)!;
+  let cur: Spot | null = null, hush: gsap.core.Tween | null = null;
+  const rectOf = (e: HTMLElement) => {
+    if (!/^H\d$/.test(e.tagName)) return e.getBoundingClientRect();
+    const rg = document.createRange(); rg.selectNodeContents(e); return rg.getBoundingClientRect();
+  };
+  const spotXY = (s: Spot) => {
+    const h = host.getBoundingClientRect(), r = rectOf(s.el), w = el.offsetWidth;
+    const x = gsap.utils.clamp(-w * 0.2, h.width - w * 0.8, r.left + r.width * s.at - h.left - w / 2);
+    el.classList.toggle("is-flip", h.left + x + w + 230 > innerWidth);
+    // the top edge comes from layout offsets, so a card still sliding in (reveal transform) doesn't skew it
+    let top = 0;
+    for (let n: HTMLElement | null = s.el; n && n !== host; n = n.offsetParent as HTMLElement | null) top += n.offsetTop;
+    return { x, y: top - el.offsetHeight + 2 };
+  };
+  const place = (s: Spot) => { cur = s; gsap.set(el, { ...spotXY(s), opacity: 1 }); };
+  const next = () => { const all = spots().filter((s) => s.el !== cur?.el); return all[Math.floor(Math.random() * all.length)] ?? spots()[0]; };
+  const up = () => gsap.timeline().to(head, { yPercent: 0, duration: reduced ? 0 : 0.5, ease: "back.out(2)" }).to(hands, { scaleY: 1, duration: reduced ? 0 : 0.15 }, reduced ? 0 : 0.25);
+  const talk = (t: string, hold = 2.6) => {
+    say.textContent = t;
+    hush?.kill();
+    gsap.fromTo(say, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: reduced ? 0 : 0.35, ease: "back.out(3)" });
+    hush = gsap.to(say, { opacity: 0, duration: 0.3, delay: hold });
+  };
+  const puff = () => gsap.fromTo($$("[data-cameo-puff] i", el), { scale: 0, opacity: 0.9, x: 0, y: 0 },
+    { scale: () => gsap.utils.random(1.2, 2), opacity: 0, x: () => gsap.utils.random(-40, 40), y: () => gsap.utils.random(-24, 6), duration: 0.6, ease: "power2.out" });
+  gsap.set(head, { yPercent: 100 });
+  ScrollTrigger.create({ trigger: host, start: "top 75%", once: true, onEnter: () => { place(spots()[0]); up().add(() => talk(say.textContent!), 0.3); } });
+  addEventListener("resize", () => cur && gsap.set(el, spotXY(cur)));
+  addEventListener("pointermove", (e) => {
+    const r = head.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height * 0.7);
+    const d = Math.hypot(dx, dy) || 1;
+    gsap.to(pupils, { x: (dx / d) * 2.6, y: (dy / d) * 2.6, duration: 0.25, overwrite: true });
+  });
+  if (!reduced) {
+    const blink = () => gsap.to(eyes, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, onComplete: () => gsap.delayedCall(gsap.utils.random(2.5, 5), blink) });
+    gsap.delayedCall(2, blink);
+  }
+  return { head, hands, say, talk, puff, place, next, spotXY, up };
+}
+
+/* Goku: two fingers to the forehead and he Instant-Transmissions to another card. Every fourth
+   tap he powers up to Super Saiyan instead, then cools off hungry. */
+function goku() {
+  const el = $("[data-goku]"), host = $(".frame--about");
+  if (!el || !host) return;
+  const c = cameo(el, host, () => [
+    { el: $(".lcard--heat", host)!, at: 0.78 },
+    { el: $(".about__title", host)!, at: 0.86 },
+    { el: $(".lcard--dl", host)!, at: 0.5 },
+    { el: $(".lcard--badge", host)!, at: 0.5 },
+  ]);
+  const it = $("[data-goku-it]", el)!, shun = $$("[data-goku-shun] i", el), grip = $("[data-hand-r]", el)!;
+  const hop = ["instant transmission!", "over here!", "heh, too slow!", "hey, nice cards!", "you're pretty fast…"];
+  let n = 0, busy = false;
+  const flash = () => gsap.fromTo(shun, { opacity: 1, scaleY: 0.2, x: (i) => (i - 2.5) * 9 }, { opacity: 0, scaleY: 1.6, duration: 0.35, stagger: 0.02, ease: "power2.out" });
+  c.head.addEventListener("click", () => {
+    if (busy) return;
+    n++;
+    if (n % 4 === 0 && !el.classList.contains("is-ssj")) {
+      c.talk("HAAAAAA…!!", 1);
+      if (!reduced) gsap.fromTo(c.head, { x: -2 }, { x: 2, duration: 0.04, repeat: 15, yoyo: true, clearProps: "x" });
+      gsap.delayedCall(reduced ? 0 : 0.6, () => { el.classList.add("is-ssj"); flash(); c.talk("this is… a SUPER SAIYAN!", 3); });
+      gsap.delayedCall(9, () => { el.classList.remove("is-ssj"); c.talk("phew… all that made me hungry."); });
+      return;
+    }
+    busy = true;
+    c.talk(hop[(n - 1) % hop.length], 1.6);
+    const to = c.next();
+    gsap.timeline({ onComplete: () => { busy = false; } })
+      .to(grip, { opacity: 0, duration: 0.08 })
+      .fromTo(it, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: reduced ? 0 : 0.25, ease: "back.out(2)" })
+      .add(flash, "+=0.35")
+      .to(el, { scaleX: 0.03, scaleY: 1.25, transformOrigin: "50% 100%", duration: reduced ? 0 : 0.16, ease: "power3.in" })
+      .add(() => { c.place(to); gsap.set(c.say, { opacity: 0 }); })
+      .add(flash, "+=0.25")
+      .to(el, { scaleX: 1, scaleY: 1, duration: reduced ? 0 : 0.3, ease: "back.out(3)" })
+      .to(it, { opacity: 0, y: 22, duration: 0.2 }, "+=0.35")
+      .to(grip, { opacity: 1, duration: 0.1 });
+  });
+}
+
+/* Luffy: every tap is Gomu Gomu no Red Hawk. His hand lets go of the card, the arm stretches
+   across it with a haki-black fist on fire, bursts into embers at full reach, then snaps back. */
+function luffy() {
+  const el = $("[data-luffy]"), host = $(".card-wrap");
+  if (!el || !host) return;
+  const card = $(".card", host)!;
+  const c = cameo(el, host, () => [{ el: card, at: 0.8 }]);
+  const pistol = $("[data-luffy-pistol]", el)!, grip = $("[data-hand-l]", el)!, embers = $$("[data-luffy-embers] i", el);
+  const lines = ["gomu gomu no… RED HAWK!!", "I'm gonna be King of the Pirates!", "MEAT!! …you got meat?", "you're in my crew now. shishishi!", "no take-backs!"];
+  let i = -1, busy = false;
+  const laugh = (s = 1.4) => { el.classList.add("is-laughing"); gsap.delayedCall(s, () => el.classList.remove("is-laughing")); };
+  c.head.addEventListener("click", () => {
+    if (busy) return;
+    // every other shout is the attack's name; in between, the usual Luffy lines
+    c.talk(++i % 2 === 0 ? lines[0] : lines[1 + ((i >> 1) % (lines.length - 1))], 2);
+    laugh();
+    if (reduced) return;
+    busy = true;
+    const reach = gsap.utils.clamp(120, 420, (gsap.getProperty(el, "x") as number) + el.offsetWidth * 0.2 - 30);
+    gsap.timeline({ onComplete: () => { busy = false; } })
+      .to(grip, { opacity: 0, duration: 0.08 })
+      .set(pistol, { opacity: 1, width: 0 })
+      .fromTo(c.head, { x: 0 }, { x: 5, duration: 0.18, ease: "power2.out" }, 0.05)
+      .to(pistol, { width: reach, duration: 0.24, ease: "power4.out" }, 0.22)
+      .to(c.head, { x: -6, duration: 0.14, ease: "power3.out" }, 0.22)
+      .fromTo(embers, { x: 0, y: 0, opacity: 1, scale: 1 },
+        { x: () => gsap.utils.random(-70, 40), y: () => gsap.utils.random(-60, 40), opacity: 0, scale: () => gsap.utils.random(0.3, 1.4), duration: () => gsap.utils.random(0.4, 0.8), ease: "power2.out" }, 0.44)
+      .to(pistol, { width: 0, duration: 0.5, ease: "elastic.in(1, 0.4)" }, "+=0.35")
+      .to(c.head, { x: 0, duration: 0.3, ease: "back.out(3)" }, "<0.4")
+      .set(pistol, { opacity: 0 })
+      .to(grip, { opacity: 1, duration: 0.1 });
+  });
+  $(".card__list .btn")?.addEventListener("pointerenter", () => { c.talk("go on, click it! shishishi"); laugh(); });
+}
+
 export function boot() {
   reveals();
   clock();
@@ -476,6 +691,8 @@ export function boot() {
   work();
   journey();
   rest();
+  luffy();
+  goku();
   loader().then(() => intro?.play());
   document.fonts?.ready.then(() => {
     ScrollTrigger.refresh();

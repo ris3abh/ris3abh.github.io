@@ -2,7 +2,9 @@
 import Base from "../layouts/Base.astro";
 import Doodle from "../components/Doodle.astro";
 import Badge from "../components/Badge.astro";
-import HeroArt from "../components/HeroArt.astro";
+import HeroPeek from "../components/HeroPeek.astro";
+import Luffy from "../components/Luffy.astro";
+import Goku from "../components/Goku.astro";
 import Ticket from "../components/Ticket.astro";
 import HangTag from "../components/HangTag.astro";
 import { SITE, PROJECTS, JOURNEY } from "../data/site";
@@ -35,29 +37,20 @@ const schema = [
 <Base schema={schema}>
   <!-- ============ HELLO ============ -->
   <section class="frame frame--hero" id="hello" aria-labelledby="hero-name">
-    <HeroArt />
     <div class="hero">
       <p class="hero__meta" data-hero-in>AI Lead Engineer at Spinutech · Tampa, FL · <span data-clock>--:--</span></p>
       <p class="hero__hi hand" data-hero-in>hi, I'm</p>
-      <h1 class="hero__name" id="hero-name" data-name>Rishabh Sharma</h1>
+      <div class="hero__namewrap"><h1 class="hero__name" id="hero-name" data-name>Rishabh Sharma</h1><HeroPeek /></div>
       <svg class="hero__scribble" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M8 26 C 90 8, 160 34, 250 20 S 420 6, 500 22 S 580 30, 592 16" pathLength="1" data-scribble /></svg>
       <p class="hero__line" data-hero-in>I build agents that <span class="hand hand--rot" data-rotate={JSON.stringify(words)}>{words[0]}</span></p>
       <p class="hero__sub" data-hero-in>
-        Leading AI at Spinutech · first author of <a href="https://arxiv.org/abs/2609.34227" target="_blank" rel="noopener">Engram</a> on arXiv ·
-        paper reviewer · hackathon judge · tinkering on <a href="https://www.archimedes.run" target="_blank" rel="noopener">archimedes.run</a> after hours
+        First author of <a href="https://arxiv.org/abs/2609.34227" target="_blank" rel="noopener">Engram</a> on arXiv · paper reviewer · hackathon judge
       </p>
       <div class="hero__cta" data-hero-in>
         <a class="btn btn--light" href="/work">See the work →</a>
         <a class="btn btn--ghost" href="#journey">The journey ↓</a>
       </div>
     </div>
-
-    <div class="sticky sticky--a" data-sticky style="--r:-6deg"><p>ship it,<br />then prove it.</p><small>— R</small></div>
-    <div class="sticky sticky--b" data-sticky style="--r:4deg"><p>agents should close their own loops.</p><small>— R</small></div>
-    <div class="sticky sticky--c" data-sticky style="--r:-3deg"><p>keep the failed run on the record.</p><small>— R</small></div>
-
-    <span class="agent-cur agent-cur--a" data-hero-cur="a"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>archimedes</b></span>
-    <span class="agent-cur agent-cur--o" data-hero-cur="o"><svg viewBox="0 0 16 16"><path d="M1 1 L14 7 L8 8.5 L6 15 Z" /></svg><b>omni</b></span>
   </section>
 
   <!-- ============ SELECTED WORK ============ -->
@@ -99,8 +92,8 @@ const schema = [
             {s.kind === "tag" && <HangTag org={s.org} role={s.role} when={s.when} place={s.place} code="DRX-MSDS" sticker="/img/drexel-dragon.webp" stickerAlt="Drexel dragon" care={["book", "neural", "chai", "code", "sparkle"]} />}
             {s.kind === "tags" && (
               <div class="tagpair">
-                <HangTag org={s.org} role={s.role} when={s.when} logo={s.logo} code="DP-IDR" care={["chip", "neural", "code", "chai", "plant"]} />
-                {s.extra && <HangTag org={s.extra.org} role={s.extra.role} when={s.extra.when} logo={s.extra.logo} code="SK-IDR" small care={["kite", "code", "chai"]} />}
+                <HangTag org={s.org} role={s.role} when={s.when} logo={s.logo} code="DP-IDR" tone="dp" care={["chip", "neural", "code", "chai", "plant"]} />
+                {s.extra && <HangTag org={s.extra.org} role={s.extra.role} when={s.extra.when} logo={s.extra.logo} code="SK-IDR" small tone="sk" care={["kite", "code", "chai"]} />}
               </div>
             )}
           </div>
@@ -122,6 +115,7 @@ const schema = [
   <!-- ============ ABOUT ============ -->
   <section class="frame frame--about" id="about" aria-labelledby="about-title">
     <p class="frame__label"><i>#</i> 04 · about.frame</p>
+    <Goku />
     <div class="about__grid">
       <div class="about__text">
         <h2 id="about-title" class="about__title">What's his deal?</h2>
@@ -153,6 +147,8 @@ const schema = [
   <!-- ============ CONNECT ============ -->
   <section class="frame frame--connect" id="connect" aria-labelledby="connect-title">
     <p class="frame__label"><i>#</i> 05 · connect.frame</p>
+    <div class="card-wrap">
+    <Luffy />
     <div class="card">
       <div class="card__list">
         <h2 id="connect-title">What I'm looking for</h2>
@@ -166,6 +162,7 @@ const schema = [
         <p class="mini out" data-out></p>
         <Doodle name="robot" class="card__robot" stroke={2.6} />
       </div>
+    </div>
     </div>
   </section>
 </Base>

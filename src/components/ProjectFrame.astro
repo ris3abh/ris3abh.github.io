@@ -35,7 +35,8 @@ const id = slug === "paper" ? "paper" : slug;
         {f.mock === "sandbox" && <Sandbox />}
         {f.mock === "dashboard" && <Dashboard />}
         {f.mock === "warroom" && <WarRoom />}
-        <p class="annot" style={f.noteAt} data-annot>{f.note}</p>
+        <p class="annot" data-annot={f.aim}>{f.note}</p>
+        <svg class="annot__arrow" aria-hidden="true" data-annot-arrow><path /><path /></svg>
       </div>
     </div>
   </div>
